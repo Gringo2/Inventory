@@ -130,7 +130,7 @@ html {
 
 body {
   padding-block-start: 72px;
-  background: var(--cultured);
+  /* background: var(--cultured); */
 }
 
 :focus-visible {
@@ -971,7 +971,7 @@ body {
    * HOME
    */
 
-  .article.container { padding-block: 35px; }
+  .article.container { padding-block: 35px; padding: 20px 20px;}
 
   .home { grid-template-columns: 1.25fr 0.75fr 1fr; }
 

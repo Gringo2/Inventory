@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -62,7 +62,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::findorfail($id);
-        return view('products.show',['product'=>$product]);
+        return view('Products.list',['product'=>$product]);
     }
 
     /**
@@ -73,19 +73,32 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('Products.edit',[
+            'product' => Product::findorfail($id),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreProductRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreProductRequest $request, $id)
     {
-        //
+        $validated = $request->validated();
+
+        $product = Product::findorfail($id);
+
+        $product->product_name = $request->input('product_name');
+        $product->description = $request->input('description');
+        $product->brand = $request->input('brand');
+        $product->quantity = $request->input('quantity');
+        $product->save();
+
+        
+
     }
 
     /**
@@ -97,5 +110,16 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function list(){
+
+        $products = Product::all();
+        return view('Products.list',['products' => $products]);
     }
 }

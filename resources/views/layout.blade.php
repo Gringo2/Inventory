@@ -8,9 +8,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link id="pagestyle" href="{{ URL::asset('css/sidebar.css') }}" rel="stylesheet" />
     <link id="pagestyle" href="{{ URL::asset('css/form.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+
+
+    
+    <!-- 
+    - dashboard home
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;900&display=swap"
+    rel="stylesheet">
+  <link id="pagestyle" href="{{ URL::asset('css/style.css') }}" rel="stylesheet" />
+
+  <!-- 
+    - dashboard home
+  -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" />
+
 
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'/>
+
     <!--
         - #HEADER
       -->
@@ -23,12 +44,27 @@
     </div>
     <ul class="nav-links">
       <li>
-        <a href="#">
+        <a href="{{route('home')}}">
           <i class='bx bx-grid-alt' ></i>
           <span class="link_name">Dashboard</span>
         </a>
-        <ul class="sub-menu blank">
+        <!-- <ul class="sub-menu blank">
           <li><a class="link_name" href="#">Category</a></li>
+        </ul> -->
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-book-alt' ></i>
+            <span class="link_name">Products</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Products</a></li>
+          <li><a href="{{route('products.create')}}">Add Product</a></li>
+          <li><a href="{{route('products.list')}}">List Product</a></li>
+          <li><a href="">Edit Product</a></li>
         </ul>
       </li>
       <li>
@@ -41,42 +77,24 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Category</a></li>
-          <li><a href="#">HTML & CSS</a></li>
-          <li><a href="#">JavaScript</a></li>
-          <li><a href="#">PHP & MySQL</a></li>
+          <li><a href="{{route('categories.create')}}">Add Category</a></li>
+          <li><a href="#">List Category</a></li>
+          <li><a href="#">Edit Category</a></li>
         </ul>
       </li>
       <li>
         <div class="iocn-link">
           <a href="#">
-            <i class='bx bx-book-alt' ></i>
-            <span class="link_name">Products</span>
+            <i class='bx bx-compass' ></i>
+            <span class="link_name">Suppliers</span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Posts</a></li>
-          <li><a href="#">Web Design</a></li>
-          <li><a href="#">Login Form</a></li>
-          <li><a href="#">Card Design</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">
-          <i class='bx bx-pie-chart-alt-2' ></i>
-          <span class="link_name">Stock</span>
-        </a>
-        <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Analytics</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">
-          <i class='bx bx-line-chart' ></i>
-          <span class="link_name">Transactions</span>
-        </a>
-        <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Chart</a></li>
+          <li><a class="link_name" href="#">Suppliers</a></li>
+          <li><a href="{{route('suppliers.create')}}">Add Suppliers</a></li>
+          <li><a href="#">List Suppliers</a></li>
+          <li><a href="#">Edit Suppliers</a></li>
         </ul>
       </li>
       <li>
@@ -88,21 +106,32 @@
           <i class='bx bxs-chevron-down arrow' ></i>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Plugins</a></li>
-          <li><a href="#">UI Face</a></li>
-          <li><a href="#">Pigments</a></li>
-          <li><a href="#">Box Icons</a></li>
+          <li><a class="link_name" href="#">Customers</a></li>
+          <li><a href="{{route('customers.create')}}">Add Customer</a></li>
+          <li><a href="#">List Customer</a></li>
+          <li><a href="#">Edit Customer</a></li>
         </ul>
       </li>
       <li>
         <a href="#">
-          <i class='bx bx-compass' ></i>
-          <span class="link_name">Suppliers</span>
+          <i class='bx bx-pie-chart-alt-2' ></i>
+          <span class="link_name">Stock</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Explore</a></li>
+          <li><a class="link_name" href="#">Stock</a></li>
         </ul>
       </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-line-chart' ></i>
+          <span class="link_name">Transactions</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Transactions</a></li>
+        </ul>
+      </li>
+      
+      
       <!-- <li>
         <a href="#">
           <i class='bx bx-history'></i>
@@ -136,11 +165,6 @@
 </ul>
   </div>
   <section class="home-section">
-    <div class="home-content">
-      <!-- <span class="text">Drop Down Sidebar</span> -->
-      
-
-    </div>
     @includeWhen($errors->any(),'_errors')
     @if(session('success'))
             <div class="flash-success">
@@ -149,7 +173,8 @@
             @endif
     @yield('content')
   </section>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
   <script>
   let arrow = document.querySelectorAll(".arrow");
   for (var i = 0; i < arrow.length; i++) {
@@ -164,6 +189,10 @@
   sidebarBtn.addEventListener("click", ()=>{
     sidebar.classList.toggle("close");
   });
+
+  $(document).ready( function () {
+    $('#mytable').DataTable();
+} );
   </script>
   
 </body>

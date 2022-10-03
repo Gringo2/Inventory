@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Category;
-use App\Http\Requests\StoreCategoryRequest;
+
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class TransactionLineController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,25 +23,18 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('Categories.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCategoryRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCategoryRequest $request)
+    public function store(Request $request)
     {
-        $validated = $request->validate();
-
-        $category = new Category;
-
-        $category->category_name = $request->input('category_name');
-        $category->description = $request->input('description');
-
-        $category->save();
+        //
     }
 
     /**
@@ -64,29 +56,19 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        return view('Categories.edit',[
-            "category" => Category::finorfail($id)
-        ]);
-
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCategoryRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreCategoryRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $validated = $request->validate();
-
-        $category = Category::findorfail($id);
-
-        $category->category_name = $request->input('category_name');
-        $category->description = $request->input('description');
-
-        $category->save();
+        //
     }
 
     /**

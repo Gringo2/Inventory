@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Supplier;
+use App\Http\Requests\StoreSupplierRequest;
 use Illuminate\Http\Request;
 
 class SupplierController extends Controller
@@ -23,18 +24,27 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        //
+        return view('Suppliers.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreSupplierRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSupplierRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $supplier = new Supplier;
+
+        $supplier->company_name = $request->input('company_name');
+        $supplier->email = $request->input('email');
+        $supplier->phone_number = $request('phone_number');
+        $supplier->address  = $request('adrress');
+
+        $supplier->save();
     }
 
     /**
@@ -56,19 +66,30 @@ class SupplierController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('Suppliers.edit', [
+            'supplier' => Supplier::findorfail($id),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreSupplierRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreSupplierRequest $request, $id)
     {
-        //
+        $validated = $request->validated();
+
+        $supplier = Supplier::findorfail($id);
+
+        $supplier->company_name = $request->input('company_name');
+        $supplier->email = $request->input('email');
+        $supplier->phone_number = $request('phone_number');
+        $supplier->address  = $request('adrress');
+        
+        $supplier->save();
     }
 
     /**
@@ -80,5 +101,11 @@ class SupplierController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function list(){
+
+        $suppliers = Supplier::all();
+        return view('Suppliers.list',['suppliers' => $suppliers]);
     }
 }

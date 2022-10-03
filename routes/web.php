@@ -24,6 +24,7 @@ Route::get('/', function () {
 route::get('/home',function(){
     return view('home');
 })->name('home');
+
 Route::match( ['get','post'], '/register', [AuthController::class,'register'])
 ->name('register')->middleware('guest');
 
@@ -33,8 +34,14 @@ Route::match( ['get','post'], '/login' ,[AuthController::class,'login'])
 Route::get('/logout', [AuthController::class, 'logout'])
 ->name('logout')->middleware('auth');
 
-Route::resource('products', ProductController::class)->except('index')
+Route::get('/products/list', [ProductController::class , 'list'])
+->name('products.list');
+
+Route::resource('products', ProductController::class)
 ->middleware('auth');
+
+// route::get('/products/list', ProductController::class , 'list')
+// ->name('products.list')->middleware('auth');
 
 Route::resource('categories', CategoryController::class)->except('index')
 ->middleware('auth');
@@ -42,8 +49,8 @@ Route::resource('categories', CategoryController::class)->except('index')
 Route::resource('customers', CustomerController::class)->except('index')
 ->middleware('auth');
 
-Route::resource('Suppliers', SupplierController::class)->except('index')
+Route::resource('suppliers', SupplierController::class)->except('index')
 ->middleware('auth');
 
-Route::resource('Transactions', TransactionController::class)->except('index')
+Route::resource('transactions', TransactionController::class)->except('index')
 ->middleware('auth');

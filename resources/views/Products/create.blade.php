@@ -1,7 +1,7 @@
 @extends('layout')
 @extends('layout2')
 
-@section('title','create product')
+@section('title','Product')
 @section('content')
 <div class="container">
         <header>Add Product</header>

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignid('user_id');
             $table->foreignid('transactionline_id');
             $table->foreignid('transaction_type');
-            $table->float('subtotal');
+            $table->float('total');
             $table->timestamps();
         });
     }
