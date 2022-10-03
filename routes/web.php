@@ -1,0 +1,49 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\CustomerController;
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+route::get('/home',function(){
+    return view('home');
+})->name('home');
+Route::match( ['get','post'], '/register', [AuthController::class,'register'])
+->name('register')->middleware('guest');
+
+Route::match( ['get','post'], '/login' ,[AuthController::class,'login'])
+->name('login')->middleware('guest');
+
+Route::get('/logout', [AuthController::class, 'logout'])
+->name('logout')->middleware('auth');
+
+Route::resource('products', ProductController::class)->except('index')
+->middleware('auth');
+
+Route::resource('categories', CategoryController::class)->except('index')
+->middleware('auth');
+
+Route::resource('customers', CustomerController::class)->except('index')
+->middleware('auth');
+
+Route::resource('Suppliers', SupplierController::class)->except('index')
+->middleware('auth');
+
+Route::resource('Transactions', TransactionController::class)->except('index')
+->middleware('auth');
