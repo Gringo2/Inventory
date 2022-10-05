@@ -6,7 +6,7 @@
 <div class="container">
         <header>Add Supplier</header>
 
-        <form method="Post"action="{{route('products.store')}}">
+        <form method="Post"action="{{route('suppliers.store')}}">
             @csrf
             <div class="form first">
                 <div class="details personal">
@@ -14,9 +14,9 @@
 
                     <div class="fields">
                         <div class="input-field">
-                            <label>Supplier Name</label>
-                            <input type="text" name="product_name" placeholder="Product Name" required>
-                            @error('product_name')
+                            <label>Company Name</label>
+                            <input type="text" name="company_name" placeholder="Company Name" required>
+                            @error('company_name')
                             <div class="error">
                                 {{$message}}
                             </div>
@@ -24,9 +24,9 @@
                         </div>
 
                         <div class="input-field">
-                            <label>Description</label>
-                            <input type="text" name="description" placeholder="Description" required>
-                            @error('description')
+                            <label>Email</label>
+                            <input type="text" name="email" placeholder="company email" required>
+                            @error('email')
                             <div class="error">
                                 {{$message}}
                             </div>
@@ -34,9 +34,9 @@
                         </div>
 
                         <div class="input-field">
-                            <label>Brand</label>
-                            <input type="text" name="brand" placeholder="brand name" required>
-                            @error('brand')
+                            <label>Phone Number</label>
+                            <input type="text" name="phone_number" placeholder="Phone Number" required>
+                            @error('phone_number')
                             <div class="error">
                                 {{$message}}
                             </div>
@@ -45,33 +45,13 @@
                         </div>
 
                         <div class="input-field">
-                            <label>Quantity</label>
-                            <input type="text" name="quantity"placeholder="quantity" required>
-                            @error('quantity')
+                            <label>Address</label>
+                            <input type="text" name="address"placeholder="i.e bole, rwanda " required>
+                            @error('address')
                             <div class="error">
                                 {{$message}}
                             </div>
                             @enderror
-                            <!-- <input type="number" placeholder="Enter mobil" required> -->
-                        </div>
-                        <!-- <div class="input-field">
-                            <label>Supplier</label>
-                            <input type="text" placeholder="supplier name" required>
-                            @error('supplier')
-                            <div class="error">
-                                {{$message}}
-                            </div>
-                            @enderror
-                        </div> -->
-
-                        <div class="input-field">
-                            <label>Category</label>
-                            <select >
-                                <option disabled selected>Select Category</option>
-                                <option></option>
-                                <option></option>
-                                <option></option>
-                            </select>
                             
                         </div>
                         <button class="nextBtn">

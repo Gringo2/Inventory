@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('product_name');
             $table->text('description');
             $table->string('brand');
+            $table->string('measurment');
             $table->string('quantity');
             $table->float('price')->default($value);
             $table->float('subtotal')->nullable($value = true);

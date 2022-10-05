@@ -40,14 +40,20 @@ Route::get('/products/list', [ProductController::class , 'list'])
 Route::resource('products', ProductController::class)
 ->middleware('auth');
 
-// route::get('/products/list', ProductController::class , 'list')
-// ->name('products.list')->middleware('auth');
+Route::get('/categories/list', [CategoryController::class , 'list'])
+->name('categories.list');
 
 Route::resource('categories', CategoryController::class)->except('index')
 ->middleware('auth');
 
+Route::get('/customers/list', [CustomerController::class , 'list'])
+->name('customers.list');
+
 Route::resource('customers', CustomerController::class)->except('index')
 ->middleware('auth');
+
+Route::get('/suppliers/list', [SupplierController::class , 'list'])
+->name('suppliers.list');
 
 Route::resource('suppliers', SupplierController::class)->except('index')
 ->middleware('auth');

@@ -78,7 +78,7 @@
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Category</a></li>
           <li><a href="{{route('categories.create')}}">Add Category</a></li>
-          <li><a href="#">List Category</a></li>
+          <li><a href="{{route('categories.list')}}">List Category</a></li>
           <li><a href="#">Edit Category</a></li>
         </ul>
       </li>
@@ -93,7 +93,7 @@
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Suppliers</a></li>
           <li><a href="{{route('suppliers.create')}}">Add Suppliers</a></li>
-          <li><a href="#">List Suppliers</a></li>
+          <li><a href="{{route('suppliers.list')}}">List Suppliers</a></li>
           <li><a href="#">Edit Suppliers</a></li>
         </ul>
       </li>
@@ -108,7 +108,7 @@
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Customers</a></li>
           <li><a href="{{route('customers.create')}}">Add Customer</a></li>
-          <li><a href="#">List Customer</a></li>
+          <li><a href="{{route('customers.list')}}">List Customer</a></li>
           <li><a href="#">Edit Customer</a></li>
         </ul>
       </li>

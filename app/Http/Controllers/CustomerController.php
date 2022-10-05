@@ -41,13 +41,13 @@ class CustomerController extends Controller
 
         $customer->company_name = $request->input('company_name');
         $customer->email = $request->input('email');
-        $customer->phone_number = $request('phone_number');
-        $customer->address  = $request('adrress');
+        $customer->phone_number = $request->input('phone_number');
+        $customer->address  = $request->input('address');
 
         $customer->save();
 
         return redirect()
-            ->route('custoemrs.create')
+            ->route('customers.create')
             ->with('success','registered customer. Company Name:' .
             $request->input('company_name').'email:'.
             $request->input('email'));
@@ -118,7 +118,7 @@ class CustomerController extends Controller
      */
     public function list(){
 
-        $products = Customer::all();
-        return view('Customers.list',['products' => $products]);
+        $customers = Customer::all();
+        return view('Customers.list',['customers' => $customers]);
     }
 }

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignid('user_id');
-            $table->foreignid('transactionline_id');
+            //$table->foreignid('transactionline_id');
             $table->foreignid('transaction_type');
             $table->float('total');
             $table->timestamps();

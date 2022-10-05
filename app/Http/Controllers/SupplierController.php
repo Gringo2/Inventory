@@ -41,10 +41,16 @@ class SupplierController extends Controller
 
         $supplier->company_name = $request->input('company_name');
         $supplier->email = $request->input('email');
-        $supplier->phone_number = $request('phone_number');
-        $supplier->address  = $request('adrress');
+        $supplier->phone_number = $request->input('phone_number');
+        $supplier->address  = $request->input('address');
 
         $supplier->save();
+
+        return redirect()
+            ->route('suppliers.create')
+            ->with('success','registered customer. Company Name:' .
+            $request->input('company_name').'email:'.
+            $request->input('email'));
     }
 
     /**

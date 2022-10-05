@@ -35,7 +35,7 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        $validated = $request->validate();
+        $validated = $request->validated();
 
         $category = new Category;
 
@@ -43,6 +43,9 @@ class CategoryController extends Controller
         $category->description = $request->input('description');
 
         $category->save();
+
+        
+
     }
 
     /**
@@ -98,5 +101,10 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function list(){
+
+        $categories = Category::all();
+        return view('Categories.list',['categories' => $categories]);
     }
 }

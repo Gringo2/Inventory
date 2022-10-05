@@ -6,7 +6,7 @@
 <div class="container">
         <header>Add Customer</header>
 
-        <form method="Post"action="{{route('products.store')}}">
+        <form method="Post"action="{{route('customers.store')}}">
             @csrf
             <div class="form first">
                 <div class="details personal">
@@ -15,8 +15,8 @@
                     <div class="fields">
                         <div class="input-field">
                             <label>Company Name</label>
-                            <input type="text" name="product_name" placeholder="Product Name" required>
-                            @error('product_name')
+                            <input type="text" name="company_name" placeholder="Company Name" required>
+                            @error('company_name')
                             <div class="error">
                                 {{$message}}
                             </div>
@@ -24,19 +24,30 @@
                         </div>
 
                         <div class="input-field">
-                            <label>Description</label>
-                            <input type="text" name="description" placeholder="Description" required>
-                            @error('description')
+                            <label>Email</label>
+                            <input type="text" name="email" placeholder="company mail" required>
+                            @error('email')
                             <div class="error">
                                 {{$message}}
                             </div>
                             @enderror
                         </div>
 
+                        
                         <div class="input-field">
-                            <label>Brand</label>
-                            <input type="text" name="brand" placeholder="brand name" required>
-                            @error('brand')
+                            <label>Phone</label>
+                            <input type="text" name="phone_number"placeholder="phone number" required>
+                            @error('phone_number')
+                            <div class="error">
+                                {{$message}}
+                            </div>
+                            @enderror
+                            
+                        </div>
+                        <div class="input-field">
+                            <label>Address</label>
+                            <input type="text" name="address" placeholder="address" required>
+                            @error('address')
                             <div class="error">
                                 {{$message}}
                             </div>
@@ -44,40 +55,12 @@
                             
                         </div>
 
-                        <div class="input-field">
-                            <label>Quantity</label>
-                            <input type="text" name="quantity"placeholder="quantity" required>
-                            @error('quantity')
-                            <div class="error">
-                                {{$message}}
-                            </div>
-                            @enderror
-                            <!-- <input type="number" placeholder="Enter mobil" required> -->
-                        </div>
-                        <!-- <div class="input-field">
-                            <label>Supplier</label>
-                            <input type="text" placeholder="supplier name" required>
-                            @error('supplier')
-                            <div class="error">
-                                {{$message}}
-                            </div>
-                            @enderror
-                        </div> -->
-
-                        <div class="input-field">
-                            <label>Category</label>
-                            <select >
-                                <option disabled selected>Select Category</option>
-                                <option></option>
-                                <option></option>
-                                <option></option>
-                            </select>
-                            
-                        </div>
+                        
+                        
                         <button class="nextBtn">
                         <span class="btnText">Submit</span>
                         <i class="uil uil-navigator"></i>
-                    </button>
+                        </button>
                     </div>
                 </div>
 
