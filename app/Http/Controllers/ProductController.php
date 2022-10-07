@@ -43,6 +43,7 @@ class ProductController extends Controller
         $product->description = $request->input('description');
         $product->brand = $request->input('brand');
         $product->quantity = $request->input('quantity');
+        $product->measurment = $request->input('measurment');
         $product->save();
 
         return redirect()

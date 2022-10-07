@@ -113,6 +113,20 @@
         </ul>
       </li>
       <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-plug' ></i>
+            <span class="link_name">Transactions</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Transactions</a></li>
+          <li><a href="{{route('transactions.create')}}">Purchase</a></li>
+          <li><a href="">Order</a></li>
+        </ul>
+      </li>
+      <li>
         <a href="#">
           <i class='bx bx-pie-chart-alt-2' ></i>
           <span class="link_name">Stock</span>
@@ -121,15 +135,7 @@
           <li><a class="link_name" href="#">Stock</a></li>
         </ul>
       </li>
-      <li>
-        <a href="#">
-          <i class='bx bx-line-chart' ></i>
-          <span class="link_name">Transactions</span>
-        </a>
-        <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Transactions</a></li>
-        </ul>
-      </li>
+      
       
       
       <!-- <li>

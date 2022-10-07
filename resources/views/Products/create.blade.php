@@ -43,7 +43,16 @@
                             @enderror
                             
                         </div>
-
+                        <div class="input-field">
+                            <label>Measurment</label>
+                            <input type="text" name="measurment"placeholder="quantity" required>
+                            @error('measurment')
+                            <div class="error">
+                                {{$message}}
+                            </div>
+                            @enderror
+                            <!-- <input type="number" placeholder="Enter mobil" required> -->
+                        </div>
                         <div class="input-field">
                             <label>Quantity</label>
                             <input type="text" name="quantity"placeholder="quantity" required>

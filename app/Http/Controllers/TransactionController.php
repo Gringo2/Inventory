@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -23,7 +23,8 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::all();
+        return view('Purchases.create', ['products' => $products]);
     }
 
     /**
