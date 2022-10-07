@@ -33,7 +33,7 @@
           <tr class="table-row">
               <td class="table-data">
               <div>
-                      <input type="checkbox" name="task-1" id="chk_{{$product->id}}" value="{{$product->id}}">
+                      <input type="checkbox" class="selectProduct" name="task-1" id="chk_{{$product->product_name}}" value="{{$product->product_name}}">
               </div>
                     </td>
                 <td class="table-data">
@@ -120,6 +120,15 @@
                   <th class="table-heading">Total</th>                 
             </tr>
           </thead>
+          <tbody>
+            <tr>
+              <th id ="selected_product_list"></th>
+              <th id ="selected_product_unit"></th>
+              <th id ="selected_product_unitprice"></th>
+              <th id ="selected_product_total"></th>
+            </tr>
+            
+          </tbody>
         </table>
         
 

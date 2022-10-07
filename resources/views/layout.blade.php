@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
     <title>
@@ -181,6 +182,7 @@
   </section>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+  <script type="text/javascript" src="{{asset('js/selectproducts.js') }}"></script>
   <script>
   let arrow = document.querySelectorAll(".arrow");
   for (var i = 0; i < arrow.length; i++) {
