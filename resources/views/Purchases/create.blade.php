@@ -32,15 +32,14 @@
           
           <tr class="table-row">
               <td class="table-data">
-              <div>
+              
                       <input type="checkbox" class="selectProduct" name="task-1" id="chk_{{$product->product_name}}" value="{{$product->product_name}}">
-              </div>
+             
                     </td>
                 <td class="table-data">
-                  <!-- <img src="./assets/images/coin-1.png" width="64" height="64" loading="lazy" alt="BTC"> -->
 
                   <div>
-                    <h3 class="h3 coin-name">{{$product->product_name}}</h3>
+                    <h3 class="h3">{{$product->product_name}}</h3>
 
                     <span class="span"></span>
                   </div>
@@ -52,29 +51,19 @@
 
                 <td class="table-data">
                   <div class="wrapper-flex">
-                    <div class="icon red">
-                      <ion-icon name="caret-down" aria-hidden="true"></ion-icon>
-                    </div>
-
+                    
                     <data class="data" value="">{{$product->brand}}</data>
                   </div>
                 </td>
 
                 <td class="table-data">
                   <div class="wrapper-flex">
-                    <div class="icon red">
-                      <ion-icon name="caret-down" aria-hidden="true"></ion-icon>
-                    </div>
-
                     <data class="data" value="">{{$product->price}}</data>
                   </div>
                 </td>
 
                 <td class="table-data">
                   <div class="wrapper-flex">
-                    <div class="icon red">
-                      <ion-icon name="caret-down" aria-hidden="true"></ion-icon>
-                    </div>
 
                     <data class="data" value="">yes</data>
                   </div>
@@ -82,9 +71,6 @@
 
                 <td class="table-data">
                   <div class="wrapper-flex">
-                    <div class="icon red">
-                      <ion-icon name="caret-down" aria-hidden="true"></ion-icon>
-                    </div>
 
                     <data class="data" value=""><a href="{{route('products.edit', ['product' => $product->id])}}">Edit</a></data>
                   </div>
@@ -120,13 +106,8 @@
                   <th class="table-heading">Total</th>                 
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th id ="selected_product_list"></th>
-              <th id ="selected_product_unit"></th>
-              <th id ="selected_product_unitprice"></th>
-              <th id ="selected_product_total"></th>
-            </tr>
+          <tbody id ="selected_product_list" >
+           
             
           </tbody>
         </table>
