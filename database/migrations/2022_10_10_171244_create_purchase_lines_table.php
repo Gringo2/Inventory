@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('purchase_lines', function (Blueprint $table) {
             $table->id();
-            $table->foreignid('product_id');
-            $table->foreignid('purchase_id');
+            $table->foreignid('product_id')->nullable($value = true);
+            $table->foreignid('purchase_id')->nullable($value = true);
+            $table->string('product_name');
             $table->string('unit');
-            $table->integer('amount');
-            $table->float('unit_price');
-            $table->float('subtotal');
+            $table->integer('amount')->nullable($value = true);
+            $table->float('unit_price')->nullable($value = true);
+            $table->float('subtotal')->nullable($value = true);
             $table->timestamps();
         });
     }

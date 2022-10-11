@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\PurchaseLine;
+use App\Http\Requests\PurchaseLinePostRequest;
 use Illuminate\Http\Request;
 
 class PurchaseController extends Controller
@@ -12,19 +13,32 @@ class PurchaseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {       
+    
+        $purchase = PurchaseLine::all();
+
+        return response()->json([
+            'status' => true,
+            'purchaseline' => $purchase
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\PurchaseLinePostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PurchaseLinePostRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $purchaseline = PurchaseLine::create($request->all());
+
+        return response()->json([
+            'status' => true,
+            'message' => "Purchase Line Created Successfully!",
+            'purchaseLine' => $purchaseline
+        ], 200);
     }
 
     /**

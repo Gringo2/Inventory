@@ -48,7 +48,7 @@ class ProductController extends Controller
 
         return redirect()
             ->route('products.create')
-            ->with('success','product is created! Product Name:' .
+            ->with('success','product is created! Product Name:'.
             $request->input('product_name').'Brand:'.
             $request->input('brand'));
 
