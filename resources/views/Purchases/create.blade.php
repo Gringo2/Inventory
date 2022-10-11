@@ -22,7 +22,7 @@
 
                   <th class="table-heading">In Stock</th>
 
-                  <th class="table-heading">Action</th>
+                 
 
                 </tr>
               </thead>
@@ -37,44 +37,33 @@
              
                     </td>
                 <td class="table-data">
-
-                  <div>
-                    <h3 class="h3">{{$product->product_name}}</h3>
-
-                    <span class="span"></span>
-                  </div>
+                    {{$product->product_name}}                 
                 </td>
 
                 <td class="table-data">
-                  <data class="data" value="">{{$product->description}}</data>
+                  {{$product->description}}
                 </td>
 
                 <td class="table-data">
-                  <div class="wrapper-flex">
-                    
-                    <data class="data" value="">{{$product->brand}}</data>
-                  </div>
+                  
+                    {{$product->brand}}
+                 
                 </td>
 
                 <td class="table-data">
-                  <div class="wrapper-flex">
-                    <data class="data" value="">{{$product->price}}</data>
-                  </div>
+                  
+                    {{$product->price}}
+                  
                 </td>
 
                 <td class="table-data">
-                  <div class="wrapper-flex">
+                  
 
-                    <data class="data" value="">yes</data>
+                    yes
                   </div>
                 </td>
 
-                <td class="table-data">
-                  <div class="wrapper-flex">
-
-                    <data class="data" value=""><a href="{{route('products.edit', ['product' => $product->id])}}">Edit</a></data>
-                  </div>
-                </td>
+                
 
                 </tr>
 
@@ -97,16 +86,16 @@
             <span class="material-symbols-rounded  icon" aria-hidden="true">arrow_forward</span>
           </button>
         </div>
-        <table>
+        <table id="selected_product_list">
           <thead class="table-head">
             <tr class="table-row">
-                  <th class="table-heading">Product Name</th>
-                  <th class="table-heading">Unit</th>                   
+                  <th class="table-heading">Product Name</th>                  
                   <th class="table-heading">UnitPrice</th>
-                  <th class="table-heading">Total</th>                 
+                  <!-- <th class="table-heading">Unit</th>  -->
+                  <!-- <th class="table-heading">Total</th>                  -->
             </tr>
           </thead>
-          <tbody id ="selected_product_list" >
+          <tbody>
            
             
           </tbody>

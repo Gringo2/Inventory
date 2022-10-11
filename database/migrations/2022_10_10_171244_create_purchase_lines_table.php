@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('purchase_lines', function (Blueprint $table) {
             $table->id();
+            $table->foreignid('product_id');
+            $table->foreignid('purchase_id');
+            $table->string('unit');
+            $table->integer('amount');
+            $table->float('unit_price');
+            $table->float('subtotal');
             $table->timestamps();
         });
     }

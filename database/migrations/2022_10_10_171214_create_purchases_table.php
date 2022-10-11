@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
+            $table->foreignid('user_id');
+            $table->float('total');
             $table->timestamps();
         });
     }
