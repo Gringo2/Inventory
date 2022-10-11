@@ -22,8 +22,6 @@
 
                   <th class="table-heading">In Stock</th>
 
-                 
-
                 </tr>
               </thead>
 
@@ -91,8 +89,9 @@
             <tr class="table-row">
                   <th class="table-heading">Product Name</th>                  
                   <th class="table-heading">UnitPrice</th>
-                  <!-- <th class="table-heading">Unit</th>  -->
-                  <!-- <th class="table-heading">Total</th>                  -->
+                  <th class="table-heading">Unit</th>
+                  <th class="table-heading">Amount</th>
+                  <th class="table-heading">Total</th>                 
             </tr>
           </thead>
           <tbody>

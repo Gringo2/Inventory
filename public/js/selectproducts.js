@@ -5,6 +5,22 @@ $('document').ready(function(){
     var productListTable = $('#selected_product_list').DataTable({retrieve:true, columns: [
                 {data: 'name'},  
                 {data: 'price'},
+                {data: 'unit',
+                render: function (data, type, row, meta) {
+                    return type === 'display'
+                        ? '<select name="pets" id="pet-select">'+ 
+                        '<option value="">choose unit</option>' +
+                        '<option value="unit1">unit1</option>' +
+                        '<option value="unit2">unit2</option>' 
+                        + '</select>'
+                        : data;
+                },},
+                {data: 'amount',
+                render: function (data, type, row, meta) {
+                    return type === 'display'
+                        ? '<input type="number" style="width: 50px;" placeholder="1" step="1" min="1" max="1000" value="1"/>'
+                        : data;
+                },}
            ]});
     $('#mytable tbody').on('change', '.selectProduct', function(){
         var selected_data = product_list.row($(this).parents('tr')).data();
