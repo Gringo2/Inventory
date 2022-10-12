@@ -9,7 +9,7 @@
             @csrf
             <input name="total" type="hidden" id="custId" name="custId" value="3487">
           
-          <button class="btn btn-primary" data-load-more id="btn_send_purchase_body">
+          <button class="btn btn-primary" data-load-more>
           <span class="spiner"></span>
 
           <span>create Purchase</span>

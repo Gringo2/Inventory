@@ -59,7 +59,7 @@ $('document').ready(function(){
                 {
                    data:{"product_name":selected_product[0].name, "unit":selected_product[0].price},
                    type: "POST",
-                   url:"/api/purchases",
+                   url:"/api/purchasecart",
                    success: function(data){
                        console.log(data);
                    }
