@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\PurchaseLine;
-use App\Http\Requests\PurchaseLinePostRequest;
+use App\Models\Product;
+use App\Models\Purchase;
+use App\Http\Requests\PurchaseRequest;
 use Illuminate\Http\Request;
 
 class PurchaseController extends Controller
@@ -13,32 +14,38 @@ class PurchaseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {       
-    
-        $purchase = PurchaseLine::all();
+    {
+        //
+    }
 
-        return response()->json([
-            'status' => true,
-            'purchaseline' => $purchase
-        ]);
+    /**
+     * Show the form for creating a new resource.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
+    {   
+        
+
+        $products = Product::all();
+        $purchase = new Purchase;
+        return view('Purchases.create', ['products' => $products , 'purchase' => $purchase]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  App\Http\Requests\PurchaseLinePostRequest  $request
+     * @param  \Illuminate\Http\PurchaseRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PurchaseLinePostRequest $request)
-    {
+    public function store(PurchaseRequest $request)
+    {   
         $validated = $request->validated();
-        $purchaseline = PurchaseLine::create($request->all());
+        $purchase = $request->user()->purchases()->create($validated);
 
-        return response()->json([
-            'status' => true,
-            'message' => "Purchase Line Created Successfully!",
-            'purchaseLine' => $purchaseline
-        ], 200);
+        return redirect()
+        ->route('purchase.create')
+        ->with('success','Purchase is created!' );
     }
 
     /**
@@ -48,6 +55,17 @@ class PurchaseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
         //
     }

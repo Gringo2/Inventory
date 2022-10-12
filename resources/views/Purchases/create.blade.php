@@ -5,6 +5,18 @@
 @section('content')
 <div style="display:flex;">
 <div class="table-container">
+        <form method="Post"action="{{route('purchase.store')}}">
+            @csrf
+            <input name="total" type="hidden" id="custId" name="custId" value="3487">
+          
+          <button class="btn btn-primary" data-load-more id="btn_send_purchase_body">
+          <span class="spiner"></span>
+
+          <span>create Purchase</span>
+        </button>
+           
+            
+        </form>
             <table id="mytable" class="market-table">
 
               <thead class="table-head">
@@ -94,14 +106,14 @@
                   <th class="table-heading">Total</th>                 
             </tr>
           </thead>
-          <tbody>
+          <tbody id="purchase_body">
            
             
           </tbody>
         </table>
         
 
-        <button class="btn btn-primary" data-load-more>
+        <button class="btn btn-primary" data-load-more id="btn_send_purchase_body">
           <span class="spiner"></span>
 
           <span>Place Purchase</span>

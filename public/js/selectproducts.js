@@ -54,4 +54,17 @@ $('document').ready(function(){
             
         }
     });
+    $('#btn_send_purchase_body').on('click', function(){
+            $.ajax(
+                {
+                   data:{"product_name":selected_product[0].name, "unit":selected_product[0].price},
+                   type: "POST",
+                   url:"/api/purchases",
+                   success: function(data){
+                       console.log(data);
+                   }
+               }
+            )
+        
+   });
 });

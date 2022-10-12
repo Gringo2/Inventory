@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\PurchaseAPI;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('purchases', PurchaseController::class);
+Route::apiResource('purchasecart', PurchaseAPI::class);
