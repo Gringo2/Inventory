@@ -33,6 +33,8 @@ $('document').ready(function(){
             selected_product.push(prodObj);
             console.log(selected_product);
             productListTable.clear().rows.add(selected_product).draw();
+            // var con = JSON.stringify(selected_product);
+            // console.log(con);
             // $('#selected_product_list').DataTable({
             //     retrieve: true,
             //     data: selected_product,
@@ -57,7 +59,8 @@ $('document').ready(function(){
     $('#btn_send_purchase_body').on('click', function(){
             $.ajax(
                 {
-                   data:{"product_name":selected_product[0].name, "unit":selected_product[0].price},
+                //    data:{"product_name":selected_product[0].name, "unit":selected_product[0].price},
+                   data: { data: selected_product},
                    type: "POST",
                    url:"/api/purchasecart",
                    success: function(data){

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Purchase;
 use App\Http\Requests\PurchaseRequest;
+use Support\Facades\Log;
 use Illuminate\Http\Request;
 
 class PurchaseController extends Controller

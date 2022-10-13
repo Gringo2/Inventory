@@ -9,7 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link id="pagestyle" href="{{ URL::asset('css/sidebar.css') }}" rel="stylesheet" />
     <link id="pagestyle" href="{{ URL::asset('css/form.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    <link id="pagestyle" href="{{ URL::asset('css/datatables.css') }}" rel="stylesheet" />
+  
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css"> -->
 
 
     
@@ -181,8 +183,9 @@
     @yield('content')
   </section>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+  <!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script> -->
   <script type="text/javascript" src="{{asset('js/selectproducts.js') }}"></script>
+  <script type="text/javascript" src="{{asset('js/datatables.js') }}"></script>
   <script>
   let arrow = document.querySelectorAll(".arrow");
   for (var i = 0; i < arrow.length; i++) {
