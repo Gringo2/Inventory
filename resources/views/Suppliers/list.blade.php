@@ -4,79 +4,48 @@
 @section('title','Suppliers')
 @section('content')
 
-<div class="table-container">
-            <table id="mytable" class="market-table">
+<div style="max-width: 80vw; margin: auto;">
+            <table id="mytable">
 
-              <thead class="table-head">
-                <tr class="table-row">
+              <thead>
+                <tr>
 
-                  <th class="table-heading">Company Name</th>
+                  <th>Company Name</th>
 
-                  <th class="table-heading">Email</th>
+                  <th>Email</th>
 
-                  <th class="table-heading">Phone Number</th>
+                  <th>Phone Number</th>
 
-                  <th class="table-heading">Address</th>
+                  <th>Address</th>
 
-                  <th class="table-heading">Action</th>
+                  <th>Action</th>
 
                 </tr>
               </thead>
 
-              <tbody class="table-body">
+              <tbody>
       @forelse($suppliers as $supplier)
           
-          <tr class="table-row">
-
-                <td class="table-data wrapper">
-                  <!-- <img src="./assets/images/coin-1.png" width="64" height="64" loading="lazy" alt="BTC"> -->
-
-                  <div>
-                    <h3 class="h3 coin-name">{{$supplier->company_name}}</h3>
-
-                    <span class="span"></span>
-                  </div>
+          <tr>
+                <td>
+                    {{$supplier->company_name}}
                 </td>
-
-                <td class="table-data">
-                  <data class="data" value="39000">{{$supplier->email}}</data>
+                <td>
+                  {{$supplier->email}}
                 </td>
-
-                <td class="table-data">
-                  <div class="wrapper-flex">
-                    <div class="icon red">
-                      <ion-icon name="caret-down" aria-hidden="true"></ion-icon>
-                    </div>
-
-                    <data class="data" value="-0.04%">{{$supplier->phone_number}}</data>
-                  </div>
+                <td>
+                    {{$supplier->phone_number}}
                 </td>
-
-                <td class="table-data">
-                  <div class="wrapper-flex">
-                    <div class="icon red">
-                      <ion-icon name="caret-down" aria-hidden="true"></ion-icon>
-                    </div>
-
-                    <data class="data" value="-3.26%">{{$supplier->address}}</data>
-                  </div>
+                <td>
+                    {{$supplier->address}}
                 </td>
-
-
-                <td class="table-data">
-                  <div class="wrapper-flex">
-                    <div class="icon red">
-                      <ion-icon name="caret-down" aria-hidden="true"></ion-icon>
-                    </div>
-
-                    <data class="data" value="-7.82%"><a href="{{route('suppliers.edit', ['supplier' => $supplier->id])}}">Edit</a></data>
-                  </div>
+                <td>
+                    <a href="{{route('suppliers.edit', ['supplier' => $supplier->id])}}">Edit</a>
                 </td>
-
-                </tr>
+          </tr>
 
       @empty
-      <h2>There are no customers yet.</h2>
+      <h2>There are no suppliers yet.</h2>
       @endforelse
 
               </tbody>

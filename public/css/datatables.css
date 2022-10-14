@@ -454,6 +454,7 @@ table.dataTable td {
   float: right;
   text-align: right;
   padding-top: 0.25em;
+  display: flex;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button {
   box-sizing: border-box;

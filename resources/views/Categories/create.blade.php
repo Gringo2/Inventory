@@ -9,13 +9,13 @@
         <form method="POST"action="{{route('categories.store')}}">
             @csrf
             <div class="form first">
-                <div class="details personal">
+                
                     
 
                     <div class="fields">
                         <div class="input-field">
                             <label>Category Name</label>
-                            <input type="text" name="category_name" placeholder="Category Name" required>
+                            <input type="text" style="width: 300px;" name="category_name" placeholder="Category Name" required>
                             @error('category_name')
                             <div class="error">
                                 {{$message}}
@@ -25,20 +25,21 @@
 
                         <div class="input-field">
                             <label>Description</label>
-                            <input type="text" name="description" placeholder="Description" required>
+                            <input type="text" style="width: 300px;" name="description" placeholder="Description" required>
                             @error('description')
                             <div class="error">
                                 {{$message}}
                             </div>
                             @enderror
                         </div>
-                        <button class="nextBtn">
-                        <span class="btnText">Submit</span>
-                        <i class="uil uil-navigator"></i>
-                    </button>
+                        
                     </div>
-                </div>
+               
+                    <button class="btn btn-primary" data-load-more>
+                        <span class="spiner"></span>
 
+                        <span>create category</span>
+                        </button>
                 
             </div>
 

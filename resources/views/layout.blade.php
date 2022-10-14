@@ -67,7 +67,6 @@
           <li><a class="link_name" href="#">Products</a></li>
           <li><a href="{{route('products.create')}}">Add Product</a></li>
           <li><a href="{{route('products.list')}}">List Product</a></li>
-          <li><a href="">Edit Product</a></li>
         </ul>
       </li>
       <li>
@@ -82,7 +81,6 @@
           <li><a class="link_name" href="#">Category</a></li>
           <li><a href="{{route('categories.create')}}">Add Category</a></li>
           <li><a href="{{route('categories.list')}}">List Category</a></li>
-          <li><a href="#">Edit Category</a></li>
         </ul>
       </li>
       <li>
@@ -97,7 +95,6 @@
           <li><a class="link_name" href="#">Suppliers</a></li>
           <li><a href="{{route('suppliers.create')}}">Add Suppliers</a></li>
           <li><a href="{{route('suppliers.list')}}">List Suppliers</a></li>
-          <li><a href="#">Edit Suppliers</a></li>
         </ul>
       </li>
       <li>
@@ -112,7 +109,6 @@
           <li><a class="link_name" href="#">Customers</a></li>
           <li><a href="{{route('customers.create')}}">Add Customer</a></li>
           <li><a href="{{route('customers.list')}}">List Customer</a></li>
-          <li><a href="#">Edit Customer</a></li>
         </ul>
       </li>
       <li>
@@ -168,7 +164,10 @@
         <div class="profile_name">Profile</div>
         <div class="job">Admin</div>
       </div>
-      <i class='bx bx-log-out' ></i>
+      <div style= "padding-right: 20px;">
+        Sign Out
+      </div>
+      <!-- <i class='bx bx-log-out' ></i> -->
     </div>
   </li>
 </ul>

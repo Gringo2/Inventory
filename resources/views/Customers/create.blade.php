@@ -57,11 +57,16 @@
 
                         
                         
-                        <button class="nextBtn">
+                        <!-- <button class="nextBtn">
                         <span class="btnText">Submit</span>
                         <i class="uil uil-navigator"></i>
-                        </button>
+                        </button> -->
                     </div>
+                    <button class="btn btn-primary" data-load-more>
+                        <span class="spiner"></span>
+
+                        <span>Add Customer</span>
+                        </button>
                 </div>
 
                 

@@ -14,7 +14,7 @@
 
                     <div class="fields">
                         <div class="input-field">
-                            <label>Product Name</label>
+                            <label>Product Name *</label>
                             <input type="text" name="product_name" placeholder="Product Name" required>
                             @error('product_name')
                             <div class="error">
@@ -34,7 +34,7 @@
                         </div>
 
                         <div class="input-field">
-                            <label>Brand</label>
+                            <label>Brand *</label>
                             <input type="text" name="brand" placeholder="brand name" required>
                             @error('brand')
                             <div class="error">
@@ -76,18 +76,35 @@
                         <div class="input-field">
                             <label>Category</label>
                             <select >
-                                <option disabled selected>Select Category</option>
-                                <option></option>
-                                <option></option>
-                                <option></option>
+                            <option disabled selected>Select Category</option>
+                            @foreach($categories as $category)
+                                
+                                <option value = "{{$category->id}}">{{$category->category_name}}</option>
+                            @endforeach
                             </select>
                             
                         </div>
-                        <button class="nextBtn">
+                        <!-- <button class="nextBtn">
                         <span class="btnText">Submit</span>
                         <i class="uil uil-navigator"></i>
-                    </button>
+                    </button> -->
+                    <div class="input-field">
+                            <label>Supplier</label>
+                            <select >
+                                <option disabled selected>Select Supplier</option>
+                                @foreach($suppliers as $supplier)
+                                
+                                <option>{{$supplier->company_name}}</option>
+                            @endforeach
+                            </select>
+                            
+                        </div>
                     </div>
+                    <button class="btn btn-primary" data-load-more>
+                        <span class="spiner"></span>
+
+                        <span>Submit Product</span>
+                        </button>
                 </div>
 
                 

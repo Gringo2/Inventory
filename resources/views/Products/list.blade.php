@@ -4,11 +4,12 @@
 @section('title','Products')
 @section('content')
 
-<div >
-            <table id="mytable">
+<div style="max-width: 80vw; margin: auto;"  >
+            <table id="mytable" >
 
-              <thead >
-                <tr >
+              <thead>
+                <tr>
+                  <th>ID</th>
 
                   <th>Product</th>
 
@@ -28,6 +29,9 @@
       @forelse($products as $product)
           
               <tr >
+                <td>
+                  <h3>{{$product->id}}</h3>
+                </td>
                 <td>
                     <h3 >{{$product->product_name}}</h3>
                 </td>
