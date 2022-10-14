@@ -111,6 +111,8 @@
             
           </tbody>
         </table>
+
+        <div id="subtotal" style="float:right;"></div>
         
 
         <button class="btn btn-primary" data-load-more id="btn_send_purchase_body">

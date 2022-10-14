@@ -122,7 +122,7 @@
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Transactions</a></li>
           <li><a href="{{route('purchase.create')}}">Purchase</a></li>
-          <li><a href="">Order</a></li>
+          <li><a href="{{route('transactions.create')}}">Order</a></li>
         </ul>
       </li>
       <li>
