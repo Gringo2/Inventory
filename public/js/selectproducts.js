@@ -1,5 +1,5 @@
 $('document').ready(function(){
-    
+    var total = 0;
     var selected_product = [];
     var product_list = $('#mytable').DataTable();
     var productListTable = $('#selected_product_list').DataTable({retrieve:true, columns: [
@@ -34,7 +34,13 @@ $('document').ready(function(){
             // console.log(selected_product.length);
             // console.log(selected_product);
             productListTable.clear().rows.add(selected_product).draw();
-            
+            total = 0;
+            for(let i = 0; i < selected_product.length; i++){
+                total = total + selected_product[i].total;
+            }
+            console.log('log' + total);
+            $('#subtotal').empty();
+            $('#subtotal').append('Total : ' + total);
         }
 
         else {
@@ -62,6 +68,14 @@ $('document').ready(function(){
                 // $('#amount').val(selected_product[i].amount)
                 // selected_product[i].amount = $ 
                 // console.log(selected_product);
+                // $('#OuterDiv').append('<div id="innerDiv"></div>');
+                total = 0;
+                for(let i = 0; i < selected_product.length; i++){
+                    total = total + selected_product[i].total;
+                }
+                console.log('log' + total);
+                $('#subtotal').empty();
+                $('#subtotal').append('Total :' + total);
             }
         } 
         console.log(selected_product);
