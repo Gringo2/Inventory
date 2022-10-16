@@ -97,7 +97,7 @@
     </div>
   </header> -->
   <main>
-    <article class="container article">
+    <article class="container article" style="max-width: 80vw;" >
 
       <h2 class="h2 article-title">Dashboard</h2>
 
@@ -148,7 +148,8 @@
           <div class="profile-card-wrapper">
 
             <figure class="card-avatar">
-              <img src="./assets/images/avatar-1.jpg" alt="Elizabeth Foster" width="48" height="48">
+              <!-- <img src="./assets/images/avatar-1.jpg" alt="Elizabeth Foster" width="48" height="48"> -->
+              <i class='bx bx-user' ></i>
             </figure>
 
             <div>

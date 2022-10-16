@@ -22,10 +22,12 @@ return new class extends Migration
             $table->string('measurment');
             $table->string('quantity');
             $table->float('price')->default($value);
-            $table->float('subtotal')->nullable($value = true);
-            $table->integer('stock')->nullable($value = true);
-            $table->foreignid('categoryid')->nullable($value = true);
-            $table->foreignid('supplierid')->nullable($value = true);
+            $table->string('batch_no');
+            $table->string('expiry_date');
+            $table->float('subtotal')->default($value);
+            $table->integer('stock')->default($value);
+            $table->foreignid('categoryid')->default($value);
+            $table->foreignid('supplierid')->default($value);
             $table->timestamps();
         });
     }

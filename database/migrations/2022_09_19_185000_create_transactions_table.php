@@ -14,9 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
+            $value = 1;
             $table->id();
             $table->foreignid('user_id');
-            $table->float('total');
+            $table->float('sub_total')->default($value);
             $table->timestamps();
         });
     }

@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->foreignid('product_id');
             $table->foreignid('transaction_id');
+            $table->float('unit_price');
             $table->string('unit');
             $table->integer('amount');
-            $table->float('unit_price');
-            $table->float('subtotal');
+            $table->float('total');
             $table->timestamps();
         });
     }

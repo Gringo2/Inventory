@@ -43,8 +43,8 @@ class AuthController extends Controller
 
         if(Auth::attempt($credentials)){
             return redirect()
-                    ->route('home')
-                    ->with('success', 'you are logged in!');
+                    ->route('dashboard');
+                    // ->with('success', 'you are logged in!');
 
         }
         
@@ -60,7 +60,7 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()
-            ->route('home')
-            ->with('success','you are now logged out.');
+            ->route('dashboard');
+            // ->with('success','you are now logged out.');
     }
 }

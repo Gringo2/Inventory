@@ -15,4 +15,14 @@ class Product extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function purchase_line(){
+
+        return $this->hasmany(PurhcaseLine::class);
+
+    }
+
+    public function transaction_line(){
+        return $this->hasmany(TransactionLine::class);
+    }
 }

@@ -15,4 +15,14 @@ class PurchaseLine extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function purchase(){
+
+        return $this->belongsTo(Purhcase::class);
+
+    }
+
+    public function product(){
+        return $this->belongsTo(Product::class);
+    }
 }

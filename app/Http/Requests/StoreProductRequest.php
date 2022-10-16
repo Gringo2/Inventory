@@ -27,7 +27,10 @@ class StoreProductRequest extends FormRequest
             "product_name" => 'required',
             "description" => 'required',
             "brand" => 'required',
+            "measurment" => "required",
             "quantity" => 'required',
+            "batch_no" => "required",
+            "expiry_date" => "required"
         ];
     }
 }

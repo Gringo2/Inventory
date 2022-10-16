@@ -15,4 +15,8 @@ class Customer extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function transaction(){
+        return $this->hasmany(Transaction::class);
+    }
 }

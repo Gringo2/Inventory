@@ -58,7 +58,7 @@
       <li>
         <div class="iocn-link">
           <a href="#">
-            <i class='bx bx-book-alt' ></i>
+            <i class='bx bx-plus-medical' ></i>
             <span class="link_name">Products</span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>
@@ -72,7 +72,7 @@
       <li>
         <div class="iocn-link">
           <a href="#">
-            <i class='bx bx-collection' ></i>
+            <i class='bx bx-category' ></i>
             <span class="link_name">Category</span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>
@@ -100,7 +100,7 @@
       <li>
         <div class="iocn-link">
           <a href="#">
-            <i class='bx bx-plug' ></i>
+            <i class='bx bx-user' ></i>
             <span class="link_name">Customers</span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>
@@ -114,7 +114,7 @@
       <li>
         <div class="iocn-link">
           <a href="#">
-            <i class='bx bx-plug' ></i>
+            <i class='bx bx-transfer' ></i>
             <span class="link_name">Transactions</span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>

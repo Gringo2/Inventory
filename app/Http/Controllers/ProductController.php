@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Supplier;
 use App\Models\Category;
+use App\Models\Measurement;
 use App\Http\Requests\StoreProductRequest;
 use Illuminate\Http\Request;
 
@@ -28,8 +29,9 @@ class ProductController extends Controller
     {   
         $suppliers = Supplier::all();
         $categories = Category::all();
+        $measurements = Measurement::all();
         return view('Products.create',['suppliers' => $suppliers, 
-        'categories' => $categories]);
+        'categories' => $categories , 'measurements' => $measurements]);
     }
 
     /**
@@ -47,8 +49,11 @@ class ProductController extends Controller
         $product->product_name = $request->input('product_name');
         $product->description = $request->input('description');
         $product->brand = $request->input('brand');
-        $product->quantity = $request->input('quantity');
         $product->measurment = $request->input('measurment');
+        $product->quantity = $request->input('quantity');
+        $product->batch_no = $request->input('batch_no');
+        $product->expiry_date = $request->input('expiry_date');
+
         $product->save();
 
         return redirect()

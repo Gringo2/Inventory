@@ -45,11 +45,17 @@
                         </div>
                         <div class="input-field">
                             <label>Measurment</label>
-                            <input type="text" name="measurment"placeholder="quantity" required>
-                            @error('measurment')
+                            <select  name = "measurment">
+                                <option disabled selected>Select Measurement</option>
+                                @foreach($measurements as $measurment)
+                                
+                                <option value="{{$measurment->name}}">{{$measurment->name}}</option>
+                            @endforeach
+                            </select>
+                            <!-- @error('measurment')
                             <div class="error">
                                 {{$message}}
-                            </div>
+                            </div> -->
                             @enderror
                             <!-- <input type="number" placeholder="Enter mobil" required> -->
                         </div>
@@ -61,19 +67,30 @@
                                 {{$message}}
                             </div>
                             @enderror
-                            <!-- <input type="number" placeholder="Enter mobil" required> -->
                         </div>
-                        <!-- <div class="input-field">
-                            <label>Supplier</label>
-                            <input type="text" placeholder="supplier name" required>
-                            @error('supplier')
+
+                        <div class="input-field">
+                            <label>Batch_no</label>
+                            <input type="text" name="batch_no" placeholder="batch number" required>
+                            @error('batch_no')
                             <div class="error">
                                 {{$message}}
                             </div>
                             @enderror
-                        </div> -->
-
+                            
+                        </div>
                         <div class="input-field">
+                            <label>Expire Date</label>
+                            <input type="text" name="expiry_date" placeholder="brand name" required>
+                            @error('expiry_date')
+                            <div class="error">
+                                {{$message}}
+                            </div>
+                            @enderror
+                            
+                        </div>
+
+                        <!-- <div class="input-field">
                             <label>Category</label>
                             <select >
                             <option disabled selected>Select Category</option>
@@ -83,18 +100,15 @@
                             @endforeach
                             </select>
                             
-                        </div>
-                        <!-- <button class="nextBtn">
-                        <span class="btnText">Submit</span>
-                        <i class="uil uil-navigator"></i>
-                    </button> -->
+                        </div> -->
+                        
                     <div class="input-field">
                             <label>Supplier</label>
-                            <select >
+                            <select name = "supplierid">
                                 <option disabled selected>Select Supplier</option>
                                 @foreach($suppliers as $supplier)
                                 
-                                <option>{{$supplier->company_name}}</option>
+                                <option value = "{{$supplier->id}}">{{$supplier->company_name}}</option>
                             @endforeach
                             </select>
                             

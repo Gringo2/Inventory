@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('purchases', function (Blueprint $table) {
+        Schema::create('measurements', function (Blueprint $table) {
             $value = 1;
             $table->id();
-            $table->foreignid('user_id');
-            $table->float('sub_total')->default($value);
+            $table->string('name');
+            $table->integer('Pack_value')->default($value);
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('purchases');
+        Schema::dropIfExists('measurements');
     }
 };
