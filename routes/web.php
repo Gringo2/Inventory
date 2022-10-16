@@ -20,11 +20,11 @@ use App\Http\Controllers\PurchaseController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Dashboard');
 });
-route::get('/home',function(){
-    return view('home');
-})->name('home');
+route::get('/dashboard',function(){
+    return view('Dashboard');
+})->name('dashboard');
 
 Route::match( ['get','post'], '/register', [AuthController::class,'register'])
 ->name('register')->middleware('guest');

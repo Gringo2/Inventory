@@ -47,7 +47,7 @@
     </div>
     <ul class="nav-links">
       <li>
-        <a href="{{route('home')}}">
+        <a href="{{route('dashboard')}}">
           <i class='bx bx-grid-alt' ></i>
           <span class="link_name">Dashboard</span>
         </a>
@@ -134,42 +134,16 @@
           <li><a class="link_name" href="#">Stock</a></li>
         </ul>
       </li>
-      
-      
-      
-      <!-- <li>
-        <a href="#">
-          <i class='bx bx-history'></i>
-          <span class="link_name">History</span>
+
+      <li> 
+        <div class="profile-details">
+          <a href="{{route('logout')}}">
+           <i class='bx bx-log-out' ></i>
+          <span class="link_name">logout</span>
         </a>
-        <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">History</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">
-          <i class='bx bx-cog' ></i>
-          <span class="link_name">Setting</span>
-        </a>
-        <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Setting</a></li>
-        </ul>
-      </li>
-      <li> -->
-    <div class="profile-details">
-      <div class="profile-content">
-        <!--<img src="image/profile.jpg" alt="profileImg">-->
-      </div>
-      <div class="name-job">
-        <div class="profile_name">Profile</div>
-        <div class="job">Admin</div>
-      </div>
-      <div style= "padding-right: 20px;">
-        Sign Out
-      </div>
       <!-- <i class='bx bx-log-out' ></i> -->
-    </div>
-  </li>
+      </div>
+    </li>
 </ul>
   </div>
   <section class="home-section">

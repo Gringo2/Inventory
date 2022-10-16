@@ -320,7 +320,7 @@
         - #PROJECTS
       -->
 
-      <section class="projects">
+      <!-- <section class="projects">
 
         <div class="section-title-wrapper">
           <h2 class="section-title">Recent Projects</h2>
@@ -582,7 +582,7 @@
 
         </ul>
 
-      </section>
+      </section> -->
 
 
 
@@ -591,7 +591,7 @@
         - #TASKS
       -->
 
-      <section class="tasks">
+      <!-- <section class="tasks">
 
         <div class="section-title-wrapper">
           <h2 class="section-title">Tasks</h2>
@@ -773,7 +773,7 @@
           <span>Load More</span>
         </button>
 
-      </section>
+      </section> -->
 
     </article>
   </main>
