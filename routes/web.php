@@ -8,6 +8,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\PurchaseAPI;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,11 +60,11 @@ Route::get('/suppliers/list', [SupplierController::class , 'list'])
 Route::resource('suppliers', SupplierController::class)->except('index')
 ->middleware('auth');
 
-Route::resource('purchase', PurchaseController::class)->except('index')
-->middleware('auth');
+Route::resource('purchase', PurchaseController::class)->middleware('auth');
 
 Route::resource('transactions', TransactionController::class)->except('index')
 ->middleware('auth');
+Route::apiResource('purchasecart', PurchaseAPI::class)->middleware('api');
 
 
 

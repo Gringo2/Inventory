@@ -89,42 +89,21 @@
                             @enderror
                             
                         </div>
-
-                        <!-- <div class="input-field">
-                            <label>Category</label>
-                            <select >
-                            <option disabled selected>Select Category</option>
-                            @foreach($categories as $category)
-                                
-                                <option value = "{{$category->id}}">{{$category->category_name}}</option>
-                            @endforeach
-                            </select>
-                            
-                        </div> -->
                         
-                    <div class="input-field">
-                            <label>Supplier</label>
-                            <select name = "supplierid">
-                                <option disabled selected>Select Supplier</option>
-                                @foreach($suppliers as $supplier)
-                                
-                                <option value = "{{$supplier->id}}">{{$supplier->company_name}}</option>
-                            @endforeach
-                            </select>
-                            
-                        </div>
-                    </div>
-                    <button class="btn btn-primary" data-load-more>
-                        <span class="spiner"></span>
-
-                        <span>Submit Product</span>
-                        </button>
+                    
+                    
                 </div>
 
                 
             </div>
 
-           
+            <div>
+                    <button class="btn btn-primary" style="margin:auto;" data-load-more>
+                        <span class="spiner"></span>
+
+                        <span>Submit Product</span>
+                        </button>
+                        </div>
         </form>
     </div>
  <!--<script src="script.js"></script>-->

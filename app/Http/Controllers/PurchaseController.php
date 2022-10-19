@@ -15,8 +15,9 @@ class PurchaseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        $purchases = Purchase::all();
+        return view('Purchases.history', ['purchases' => $purchases]);
     }
 
     /**
@@ -31,6 +32,8 @@ class PurchaseController extends Controller
         $products = Product::all();
         $purchase = new Purchase;
         return view('Purchases.create', ['products' => $products , 'purchase' => $purchase]);
+        // $purchases = Purchase::all();
+        // return view('Purchases.createpurchase', ['purchases' => $purchases]);
     }
 
     /**

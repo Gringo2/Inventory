@@ -17,56 +17,61 @@
            
             
         </form>
-            <table id="mytable" class="market-table">
+            <table id="mytable">
 
-              <thead class="table-head">
-                <tr class="table-row">
+              <thead>
+                <tr>
                   
-                  <th class="table-heading">Select</th>
+                  <th>Select</th>
 
-                  <th class="table-heading">Product</th>
+                  <th>ID</th>
 
-                  <th class="table-heading">Description</th>
+                  <th>Product</th>
 
-                  <th class="table-heading">Brand</th>
+                  <th>Description</th>
 
-                  <th class="table-heading">Price</th>
+                  <th>Brand</th>
 
-                  <th class="table-heading">In Stock</th>
+                  <th>Price</th>
+
+                  <th>In Stock</th>
 
                 </tr>
               </thead>
 
-              <tbody class="table-body">
+              <tbody>
       @forelse($products as $product)
           
-          <tr class="table-row">
-              <td class="table-data">
-              
+          <tr>
+              <td>
+
                       <input type="checkbox" class="selectProduct" name="task-1" id="chk_{{$product->product_name}}" value="{{$product->product_name}}">
              
                     </td>
-                <td class="table-data">
+                <td>
+                  {{$product->id}}
+                </td>
+                <td>
                     {{$product->product_name}}                 
                 </td>
 
-                <td class="table-data">
+                <td>
                   {{$product->description}}
                 </td>
 
-                <td class="table-data">
+                <td>
                   
                     {{$product->brand}}
                  
                 </td>
 
-                <td class="table-data">
+                <td>
                   
                     {{$product->price}}
                   
                 </td>
 
-                <td class="table-data">
+                <td>
                   
 
                     yes
@@ -97,13 +102,14 @@
           </button>
         </div>
         <table id="selected_product_list">
-          <thead class="table-head">
-            <tr class="table-row">
-                  <th class="table-heading">Product Name</th>                  
-                  <th class="table-heading">UnitPrice</th>
-                  <th class="table-heading">Unit</th>
-                  <th class="table-heading">Amount</th>
-                  <th class="table-heading">Total</th>                 
+          <thead>
+            {{csrf_field()}}
+            <tr>
+                  <th>Product Name</th>                  
+                  <th>UnitPrice</th>
+                  <th>Unit</th>
+                  <th>Amount</th>
+                  <th>Total</th>                 
             </tr>
           </thead>
           <tbody id="purchase_body">

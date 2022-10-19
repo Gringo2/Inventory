@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('purchase_lines', function (Blueprint $table) {
             $table->id();
-            $table->foreignid('product_id')->nullable($value = true);
-            $table->foreignid('purchase_id')->nullable($value = true);
+            $table->foreignId('product_id')->nullable($value = true);
+            $table->foreignId('purchase_id')->nullable($value = true);
             $table->string('product_name');
             $table->float('unit_price')->nullable($value = true);
             $table->string('unit');

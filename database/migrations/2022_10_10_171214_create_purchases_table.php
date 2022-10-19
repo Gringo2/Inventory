@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('purchases', function (Blueprint $table) {
             $value = 1;
             $table->id();
-            $table->foreignid('user_id');
+            $table->foreignId('user_id');
+            $table->foreignId('supplierid');
             $table->float('sub_total')->default($value);
             $table->timestamps();
         });

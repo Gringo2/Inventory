@@ -122,7 +122,9 @@
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Transactions</a></li>
           <li><a href="{{route('purchase.create')}}">Purchase</a></li>
+          <li><a href="{{route('purchase.index')}}">Purchase history</a></li>
           <li><a href="{{route('transactions.create')}}">Order</a></li>
+          
         </ul>
       </li>
       <li>
@@ -159,6 +161,7 @@
   <!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script> -->
   <script type="text/javascript" src="{{asset('js/selectproducts.js') }}"></script>
   <script type="text/javascript" src="{{asset('js/datatables.js') }}"></script>
+  <script type="text/javascript" src="{{asset('js/purchasedetail.js') }}"></script>
   <script>
   let arrow = document.querySelectorAll(".arrow");
   for (var i = 0; i < arrow.length; i++) {

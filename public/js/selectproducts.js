@@ -27,8 +27,8 @@ $('document').ready(function(){
         var selected_data = product_list.row($(this).parents('tr')).data();
         if($(this).is(':checked')){
             var value = 1;
-            var prodObj = {'name': selected_data[1], 'price':selected_data[4] ,
-            'amount': value , 'total': selected_data[4]*value, 'unit': 1}
+            var prodObj = {'product_id':selected_data[1],'name': selected_data[2], 'price':selected_data[5] ,
+            'amount': value , 'total': selected_data[5]*value, 'unit': 1}
             selected_product.push(prodObj);
             //detect increase in amount
             // console.log(selected_product.length);
@@ -46,9 +46,9 @@ $('document').ready(function(){
         else {
             var selected_data = product_list.row($(this).parents('tr')).data();
             console.log(selected_data);
-            var selectedName = selected_data[1];
+            var selectedId = selected_data[1];
             selected_product = selected_product.filter(function(data){
-                 return data.name != selectedName;
+                 return data.product_id != selectedId;
             });
             console.log(selected_product);
             productListTable.clear().rows.add(selected_product).draw();
@@ -80,13 +80,15 @@ $('document').ready(function(){
         } 
         console.log(selected_product);
     });
+    console.log($('input[name="_token"]').val());
     $('#btn_send_purchase_body').on('click', function(){
             $.ajax(
                 {
-                //    data:{"product_name":selected_product[0].name, "unit":selected_product[0].price},
-                   data: { data: selected_product},
+                // data:{"product_name":selected_product[0].name, "unit":selected_product[0].price},
+                   data: { data: selected_product , total: total},
+                   headers: {'X-CSRF-TOKEN': $('input[name="_token"]').val()},
                    type: "POST",
-                   url:"/api/purchasecart",
+                   url:"/purchasecart",
                    success: function(data){
                        console.log(data);
                    }

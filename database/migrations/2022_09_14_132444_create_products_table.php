@@ -26,8 +26,7 @@ return new class extends Migration
             $table->string('expiry_date');
             $table->float('subtotal')->default($value);
             $table->integer('stock')->default($value);
-            $table->foreignid('categoryid')->default($value);
-            $table->foreignid('supplierid')->default($value);
+            $table->foreignId('categoryid')->default($value);
             $table->timestamps();
         });
     }

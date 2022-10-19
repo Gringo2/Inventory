@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 use App\Models\PurchaseLine;
+use App\Models\Purchase;
 use App\Http\Requests\PurchaseLinePostRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
+
 
 class PurchaseAPI extends Controller
 {
@@ -31,14 +34,26 @@ class PurchaseAPI extends Controller
      */
     public function store(Request $request)
     {  
-        // Log::info($request); 
+        Log::info($request); 
         // $array = json_decode($request, true);
-        
+        $purchase = new Purchase;
+        //Retrieve the currently authenticated user's ID...
+        $purchase->user_id = Auth::User()->id;
+        Log::info(Auth::user());
+        $purchase->sub_total = $request['total'];
+        $purchase->supplierid = 11;
+        $purchase->save();
+
         foreach($request['data'] as $newReq)
         {
             $purchaseline = PurchaseLine::create([
-                'product_name' => $newReq['name'],
-                'unit' => $newReq['price']
+                'product_id'    => $newReq['product_id'],
+                'purchase_id'   => $purchase->id,
+                'product_name'  => $newReq['name'],
+                'unit_price'    => $newReq['price'],
+                'unit'          => $newReq['unit'],
+                'amount'        => $newReq['amount'],
+                'total'         => $newReq['total']
                 ]
             );
         }

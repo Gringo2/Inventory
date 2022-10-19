@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('transaction_lines', function (Blueprint $table) {
             $table->id();
-            $table->foreignid('product_id');
-            $table->foreignid('transaction_id');
+            $table->foreignId('product_id');
+            $table->foreignId('transaction_id');
             $table->float('unit_price');
             $table->string('unit');
             $table->integer('amount');

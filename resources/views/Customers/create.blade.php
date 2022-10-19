@@ -62,14 +62,14 @@
                         <i class="uil uil-navigator"></i>
                         </button> -->
                     </div>
-                    <button class="btn btn-primary" data-load-more>
+                    
+                </div>
+                <button class="btn btn-primary" style="margin:auto;" data-load-more>
                         <span class="spiner"></span>
 
                         <span>Add Customer</span>
                         </button>
-                </div>
 
-                
             </div>
 
            
