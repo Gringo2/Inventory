@@ -14,33 +14,33 @@
 
                   <th>User</th>
 
-                  <th>Supplier</th>
+                  <th>customer</th>
 
                   <th>SubTotal</th>
 
-                  <th>Purchase Date</th>
+                  <th>Order Date</th>
 
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-      @forelse($purchases as $purchase)
+      @forelse($transactions as $transaction)
           
               <tr >
                 <td></td>
                 <td>
-                  <h3>{{$purchase->id}}</h3>
+                  <h3>{{$transaction->id}}</h3>
                 </td>
                 <td>
-                    {{$purchase->user->name}}
+                    {{$transaction->user->name}}
                 </td>
                 <td>  
                 </td>
                 <td>
-                    {{$purchase->sub_total}}
+                    {{$transaction->sub_total}}
                 </td>
                 <td>
-                    {{$purchase->date}}
+                    {{$transaction->date}}
                 </td>
               </tr>
       @empty

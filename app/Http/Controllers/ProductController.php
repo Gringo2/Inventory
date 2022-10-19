@@ -48,11 +48,10 @@ class ProductController extends Controller
 
         $product->product_name = $request->input('product_name');
         $product->description = $request->input('description');
-        $product->brand = $request->input('brand');
-        $product->measurment = $request->input('measurment');
+        $product->measurement = $request->input('measurment');
         $product->quantity = $request->input('quantity');
-        $product->batch_no = $request->input('batch_no');
-        $product->expiry_date = $request->input('expiry_date');
+       
+        
 
         $product->save();
 

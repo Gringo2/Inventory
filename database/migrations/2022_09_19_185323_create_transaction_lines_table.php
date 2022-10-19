@@ -17,10 +17,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_id');
             $table->foreignId('transaction_id');
+            $table->string('product_name');
             $table->float('unit_price');
             $table->string('unit');
+            $table->string('batch_no');
             $table->integer('amount');
             $table->float('total');
+            $table->string('expire_date');
             $table->timestamps();
         });
     }

@@ -20,8 +20,10 @@ return new class extends Migration
             $table->string('product_name');
             $table->float('unit_price')->nullable($value = true);
             $table->string('unit');
+            $table->string('batch_no');
             $table->integer('amount')->nullable($value = true);
             $table->float('total')->nullable($value = true);
+            $table->string('expire_date');
             $table->timestamps();
         });
     }

@@ -124,6 +124,7 @@
           <li><a href="{{route('purchase.create')}}">Purchase</a></li>
           <li><a href="{{route('purchase.index')}}">Purchase history</a></li>
           <li><a href="{{route('transactions.create')}}">Order</a></li>
+          <li><a href="{{route('transactions.index')}}">Order history</a></li>
           
         </ul>
       </li>

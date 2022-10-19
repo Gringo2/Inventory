@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreignId('customerid');
             $table->float('sub_total')->default($value);
+            $table->dateTime('date', $precision = 0);
             $table->timestamps();
         });
     }

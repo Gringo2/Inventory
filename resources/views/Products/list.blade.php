@@ -13,15 +13,13 @@
 
                   <th>Product</th>
 
-                  <th>Description</th>
-
-                  <th>Brand</th>
+                  <th>Measurement</th>
 
                   <th >Price</th>
 
-                  <th >In Stock</th>
+                  <th>retail price</th>
 
-                  <th >Action</th>
+                  <th>Stock</th>
 
                 </tr>
               </thead>
@@ -36,20 +34,21 @@
                     <h3 >{{$product->product_name}}</h3>
                 </td>
                 <td>
-                  {{$product->description}}
+                    {{$product->measurement}}
+                </td>
+        
+                <td>
+                    {{$product->purchase_price}}
                 </td>
                 <td>
-                    {{$product->brand}}
+                    {{$product->retail_price}}
                 </td>
                 <td>
-                    {{$product->price}}
+                    {{$product->stock}}
                 </td>
-                <td>
-                    yes
-                </td>
-                <td>
+                <!-- <td>
                     <a href="{{route('products.edit', ['product' => $product->id])}}">Edit</a>
-                </td>
+                </td> -->
               </tr>
 
       @empty

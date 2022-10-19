@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Purchase;
+use App\Models\Supplier;
 use App\Http\Requests\PurchaseRequest;
 use Support\Facades\Log;
 use Illuminate\Http\Request;
@@ -31,7 +32,8 @@ class PurchaseController extends Controller
 
         $products = Product::all();
         $purchase = new Purchase;
-        return view('Purchases.create', ['products' => $products , 'purchase' => $purchase]);
+        $suppliers = Supplier::all();
+        return view('Purchases.create', ['products' => $products , 'purchase' => $purchase , 'suppliers' => $suppliers]);
         // $purchases = Purchase::all();
         // return view('Purchases.createpurchase', ['purchases' => $purchases]);
     }
@@ -60,7 +62,8 @@ class PurchaseController extends Controller
      */
     public function show($id)
     {
-        //
+        $purchase = Purchase::findorFail($id);
+        return view('Purchases.show',['purchase'=>$purchase]);
     }
 
     /**

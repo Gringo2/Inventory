@@ -27,8 +27,8 @@ $('document').ready(function(){
         var selected_data = product_list.row($(this).parents('tr')).data();
         if($(this).is(':checked')){
             var value = 1;
-            var prodObj = {'product_id':selected_data[1],'name': selected_data[2], 'price':selected_data[4] ,
-            'amount': value , 'total': selected_data[4]*value, 'unit': 1}
+            var prodObj = {'product_id':selected_data[1],'name': selected_data[2], 'price':selected_data[5] ,
+            'amount': value , 'total': selected_data[5]*value, 'unit': 1}
             selected_product.push(prodObj);
             //detect increase in amount
             // console.log(selected_product.length);
@@ -88,7 +88,7 @@ $('document').ready(function(){
                    data: { data: selected_product , total: total},
                    headers: {'X-CSRF-TOKEN': $('input[name="_token"]').val()},
                    type: "POST",
-                   url:"/transactioncart",
+                   url:"/purchasecart",
                    success: function(data){
                        console.log(data);
                    }

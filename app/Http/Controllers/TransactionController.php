@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Product;
+use App\Models\Customer;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -13,7 +15,8 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        $transactions = Transaction::all();
+        return view('Orders.history', ['transactions' => $transactions]);
     }
 
     /**
@@ -24,7 +27,8 @@ class TransactionController extends Controller
     public function create()
     {
         $products = Product::all();
-        return view('Purchases.create', ['products' => $products]);
+        $customers = Customer::all();
+        return view('Orders.create', ['products' => $products, 'customers' => $customers]);
     }
 
     /**

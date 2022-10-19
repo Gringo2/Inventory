@@ -34,16 +34,6 @@
                         </div>
 
                         <div class="input-field">
-                            <label>Brand *</label>
-                            <input type="text" name="brand" placeholder="brand name" required>
-                            @error('brand')
-                            <div class="error">
-                                {{$message}}
-                            </div>
-                            @enderror
-                            
-                        </div>
-                        <div class="input-field">
                             <label>Measurment</label>
                             <select  name = "measurment">
                                 <option disabled selected>Select Measurement</option>
@@ -52,12 +42,11 @@
                                 <option value="{{$measurment->name}}">{{$measurment->name}}</option>
                             @endforeach
                             </select>
-                            <!-- @error('measurment')
+                            @error('measurment')
                             <div class="error">
                                 {{$message}}
-                            </div> -->
+                            </div>
                             @enderror
-                            <!-- <input type="number" placeholder="Enter mobil" required> -->
                         </div>
                         <div class="input-field">
                             <label>Quantity</label>
@@ -68,30 +57,6 @@
                             </div>
                             @enderror
                         </div>
-
-                        <div class="input-field">
-                            <label>Batch_no</label>
-                            <input type="text" name="batch_no" placeholder="batch number" required>
-                            @error('batch_no')
-                            <div class="error">
-                                {{$message}}
-                            </div>
-                            @enderror
-                            
-                        </div>
-                        <div class="input-field">
-                            <label>Expire Date</label>
-                            <input type="text" name="expiry_date" placeholder="brand name" required>
-                            @error('expiry_date')
-                            <div class="error">
-                                {{$message}}
-                            </div>
-                            @enderror
-                            
-                        </div>
-                        
-                    
-                    
                 </div>
 
                 

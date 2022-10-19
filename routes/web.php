@@ -9,6 +9,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\PurchaseAPI;
+use App\Http\Controllers\TransactionAPI;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,9 +63,11 @@ Route::resource('suppliers', SupplierController::class)->except('index')
 
 Route::resource('purchase', PurchaseController::class)->middleware('auth');
 
-Route::resource('transactions', TransactionController::class)->except('index')
-->middleware('auth');
+Route::resource('transactions', TransactionController::class)->middleware('auth');
+
 Route::apiResource('purchasecart', PurchaseAPI::class)->middleware('api');
+
+Route::apiResource('transactioncart', TransactionAPI::class)->middleware('api');
 
 
 

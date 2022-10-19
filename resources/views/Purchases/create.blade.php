@@ -5,18 +5,6 @@
 @section('content')
 <div style="display:flex;">
 <div class="table-container">
-        <form method="Post"action="{{route('purchase.store')}}">
-            @csrf
-            <input name="total" type="hidden" id="custId" name="custId" value="3487">
-          
-          <button class="btn btn-primary" data-load-more>
-          <span class="spiner"></span>
-
-          <span>create Purchase</span>
-        </button>
-           
-            
-        </form>
             <table id="mytable">
 
               <thead>
@@ -28,7 +16,7 @@
 
                   <th>Product</th>
 
-                  <th>Description</th>
+                  <th>Measurement</th>
 
                   <th>Brand</th>
 
@@ -43,11 +31,9 @@
       @forelse($products as $product)
           
           <tr>
-              <td>
-
-                      <input type="checkbox" class="selectProduct" name="task-1" id="chk_{{$product->product_name}}" value="{{$product->product_name}}">
-             
-                    </td>
+                <td>
+                    <input type="checkbox" class="selectProduct" name="task-1" id="chk_{{$product->product_name}}" value="{{$product->product_name}}">
+                </td>
                 <td>
                   {{$product->id}}
                 </td>
@@ -56,7 +42,7 @@
                 </td>
 
                 <td>
-                  {{$product->description}}
+                  {{$product->measurement}}
                 </td>
 
                 <td>
@@ -72,10 +58,7 @@
                 </td>
 
                 <td>
-                  
-
                     yes
-                  </div>
                 </td>
 
                 
@@ -91,16 +74,19 @@
             </table>
 </div>
 <section class="tasks">
-
-        <div class="section-title-wrapper">
-          <h2 class="section-title">Purchase</h2>
-
-          <button class="btn btn-link icon-box">
-            <span>View All</span>
-
-            <span class="material-symbols-rounded  icon" aria-hidden="true">arrow_forward</span>
-          </button>
-        </div>
+        <div class="input-field">
+                            <label>Supplier  </label>
+                            <select  name = "supplierid">
+                                <option disabled selected>Select Supplier</option>
+                                
+                                @foreach($suppliers as $supplier)
+                                
+                                <option value="{{$supplier->id}}">{{$supplier->company_name}}</option>
+                               @endforeach
+                            </select>
+                           
+                            
+                        </div>
         <table id="selected_product_list">
           <thead>
             {{csrf_field()}}

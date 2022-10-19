@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PurchaseLine;
 use App\Models\Purchase;
+use App\Models\Product;
 use App\Http\Requests\PurchaseLinePostRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
@@ -42,6 +43,7 @@ class PurchaseAPI extends Controller
         Log::info(Auth::user());
         $purchase->sub_total = $request['total'];
         $purchase->supplierid = 11;
+        $purchase->date = now();
         $purchase->save();
 
         foreach($request['data'] as $newReq)
@@ -52,10 +54,16 @@ class PurchaseAPI extends Controller
                 'product_name'  => $newReq['name'],
                 'unit_price'    => $newReq['price'],
                 'unit'          => $newReq['unit'],
+                'batch_no'      => 112,
                 'amount'        => $newReq['amount'],
-                'total'         => $newReq['total']
+                'total'         => $newReq['total'],
+                'expire_date'   => 12
                 ]
             );
+            $product = Product::findorfail($newReq['product_id']);
+            $product->stock = $product->stock + $newReq['amount'];
+            
+            $product->save();
         }
         return response()->json([
             'status' => true,
