@@ -5,7 +5,7 @@
 @section('content')
 <div style="display:flex;">
 <div class="table-container">
-            <table id="mytable">
+            <table id="purchase_table">
 
               <thead>
                 <tr>
@@ -18,12 +18,7 @@
 
                   <th>Measurement</th>
 
-                  <th>Brand</th>
-
-                  <th>Price</th>
-
-                  <th>In Stock</th>
-
+                 
                 </tr>
               </thead>
 
@@ -44,25 +39,7 @@
                 <td>
                   {{$product->measurement}}
                 </td>
-
-                <td>
-                  
-                    {{$product->brand}}
-                 
-                </td>
-
-                <td>
-                  
-                    {{$product->price}}
-                  
-                </td>
-
-                <td>
-                    yes
-                </td>
-
                 
-
                 </tr>
 
       @empty
@@ -87,12 +64,12 @@
                            
                             
                         </div>
-        <table id="selected_product_list">
+        <table id="selected_purchase_list">
           <thead>
             {{csrf_field()}}
             <tr>
                   <th>Product Name</th>                  
-                  <th>UnitPrice</th>
+                  <th>Purchase Price</th>
                   <th>Unit</th>
                   <th>Amount</th>
                   <th>Total</th>                 

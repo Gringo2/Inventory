@@ -163,6 +163,8 @@
   <script type="text/javascript" src="{{asset('js/selectproducts.js') }}"></script>
   <script type="text/javascript" src="{{asset('js/datatables.js') }}"></script>
   <script type="text/javascript" src="{{asset('js/purchasedetail.js') }}"></script>
+  <script type="text/javascript" src="{{asset('js/selectpurchase.js') }}"></script>
+
   <script>
   let arrow = document.querySelectorAll(".arrow");
   for (var i = 0; i < arrow.length; i++) {
