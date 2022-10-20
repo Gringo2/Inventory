@@ -53,7 +53,7 @@
 <section class="tasks">
         <div class="input-field">
                             <label>Supplier  </label>
-                            <select  name = "supplierid">
+                            <select  name = "supplierid" id = "supplier_id">
                                 <option disabled selected>Select Supplier</option>
                                 
                                 @foreach($suppliers as $supplier)
@@ -70,7 +70,8 @@
             <tr>
                   <th>Product Name</th>                  
                   <th>Purchase Price</th>
-                  <th>Unit</th>
+                  <th>batch_no</th>
+                  <th>Expire Date</th>
                   <th>Amount</th>
                   <th>Total</th>                 
             </tr>

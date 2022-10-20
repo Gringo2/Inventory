@@ -81,11 +81,11 @@ $('document').ready(function(){
         console.log(selected_product);
     });
     console.log($('input[name="_token"]').val());
-    $('#btn_send_purchase_body').on('click', function(){
+    $('#btn_send_order_body').on('click', function(){
             $.ajax(
                 {
                 // data:{"product_name":selected_product[0].name, "unit":selected_product[0].price},
-                   data: { data: selected_product , total: total},
+                   data: { data: selected_product , total: total , customer_id : $('customer_id').val()},
                    headers: {'X-CSRF-TOKEN': $('input[name="_token"]').val()},
                    type: "POST",
                    url:"/transactioncart",

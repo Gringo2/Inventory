@@ -40,7 +40,7 @@ class TransactionAPI extends Controller
         $transaction->user_id = Auth::User()->id;
         Log::info(Auth::user());
         $transaction->sub_total = $request['total'];
-        $transaction->customerid = 1;
+        $transaction->customerid = $request['customer_id'];
         $transaction->date = now();
         $transaction->save();
 

@@ -35,12 +35,16 @@
                     {{$transaction->user->name}}
                 </td>
                 <td>  
+                  {{$transaction->customerid}}
                 </td>
                 <td>
                     {{$transaction->sub_total}}
                 </td>
                 <td>
                     {{$transaction->date}}
+                </td>
+                <td>
+                  <a href="{{route('transactions.show', ['transaction'=>$transaction->id])}}" class="btn btn-primary" style="justify-content: center;">details</a>
                 </td>
               </tr>
       @empty

@@ -34,13 +34,17 @@
                 <td>
                     {{$purchase->user->name}}
                 </td>
-                <td>  
+                <td> 
+                  {{$purchase->supplierid}} 
                 </td>
                 <td>
                     {{$purchase->sub_total}}
                 </td>
                 <td>
                     {{$purchase->date}}
+                </td>
+                <td>
+                  <a href="{{route('purchase.show', ['purchase'=>$purchase->id])}}" class="btn btn-primary" style="justify-content: center;">details</a>
                 </td>
               </tr>
       @empty

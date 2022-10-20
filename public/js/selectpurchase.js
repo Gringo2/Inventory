@@ -10,15 +10,19 @@ $('document').ready(function(){
                         ? `<input type="text" id=${"price_"+row["name"]}  class="inp" name="lname" style="max-width:100px" value="${data}">`
                         : data;
                 },},
-                {data: 'unit',
+                {data: 'batch_no',
                 render: function (data, type, row, meta) {
                     return type === 'display'
-                        ? '<select name="" id="pet-select">'+ 
-                        '<option value="1">unit1</option>' +
-                        '<option value="2">unit2</option>' 
-                        + '</select>'
+                        ? `<input type="text" id=${"batch_"+row["name"]}  class="inp" name="lname" style="max-width:100px" value="${data}">`
                         : data;
                 },},
+                {data: 'expire_date',
+                render: function (data, type, row, meta) {
+                    return type === 'display'
+                        ? `<input type="date" id=${"expire_"+row["name"]}  class="inp" name="lname" style="max-width:130px" value="${data}">`
+                        : data;
+                },},
+                
                 {data: 'amount',
                 render: function (data, type, row, meta) {
                     return type === 'display'
@@ -32,8 +36,16 @@ $('document').ready(function(){
         var selected_data = product_list.row($(this).parents('tr')).data();
         if($(this).is(':checked')){
             var value = 1;
-            var prodObj = {'product_id':selected_data[1],'name': selected_data[2], 'price':0 ,
-            'amount': value , 'total': selected_data[5]*value, 'unit': 1}
+            var prodObj = {
+                'product_id':selected_data[1],
+                'name': selected_data[2], 
+                'price':0, 
+                'batch_no': 0 , 
+                'expire_date' : "" ,
+                'amount': value , 
+                'total': selected_data[5]*value, 
+                'unit': 1}
+
             selected_product.push(prodObj);
             //detect increase in amount
             // console.log(selected_product.length);
@@ -63,11 +75,15 @@ $('document').ready(function(){
     $('#selected_purchase_list tbody').on('change', '.inp', function() { 
         var n_selected_data = productListTable.row($(this).parents('tr')).data();
         var val = $('#price_' + n_selected_data.name).val();  
+        var val2 = $('#batch_' + n_selected_data.name).val(); 
+        var val3 = $('#expire_' + n_selected_data.name).val();
         console.log(val);
+        console.log(val2);
         for(let i = 0; i < selected_product.length; i++ ){
             if(selected_product[i].name == n_selected_data.name){
                 selected_product[i].price = val;
-                
+                selected_product[i].batch_no = val2;
+                selected_product[i].expire_date = val3;
                 selected_product[i].total = selected_product[i].price * selected_product[i].amount;
                 productListTable.clear().rows.add(selected_product).draw();
 
@@ -86,7 +102,8 @@ $('document').ready(function(){
     });
     $('#selected_purchase_list tbody').on('change', '.inp_chk', function() {    
         var n_selected_data = productListTable.row($(this).parents('tr')).data();
-        var val = $('#amount_' + n_selected_data.name).val();  
+        var val = $('#amount_' + n_selected_data.name).val();
+        
         for(let i = 0; i < selected_product.length; i++ ){
             if(selected_product[i].name == n_selected_data.name){
                 selected_product[i].amount = val;
@@ -114,7 +131,7 @@ $('document').ready(function(){
             $.ajax(
                 {
                 // data:{"product_name":selected_product[0].name, "unit":selected_product[0].price},
-                   data: { data: selected_product , total: total},
+                   data: { data: selected_product , total: total , supplier_id : $('#supplier_id').val()},
                    headers: {'X-CSRF-TOKEN': $('input[name="_token"]').val()},
                    type: "POST",
                    url:"/purchasecart",

@@ -67,12 +67,12 @@
 <section class="tasks">
         <div class="input-field">
                             <label>Supplier  </label>
-                            <select  name = "supplierid">
+                            <select  name = "supplierid" id="customer_id">
                                 <option disabled selected>Select Customer</option>
                                 
                                 @foreach($customers as $customer)
                                 
-                                <option value="{{$supplier->id}}">{{$customer->company_name}}</option>
+                                <option value="{{$customer->id}}">{{$customer->company_name}}</option>
                                @endforeach
                             </select>
                            
@@ -98,7 +98,7 @@
         <div id="subtotal" style="float:right;"></div>
         
 
-        <button class="btn btn-primary" data-load-more id="btn_send_purchase_body">
+        <button class="btn btn-primary" data-load-more id="btn_send_order_body">
           <span class="spiner"></span>
 
           <span>Place Purchase</span>
