@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Customer;
 use App\Models\Transaction;
+use APp\Models\TransactionLines;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
@@ -50,7 +52,9 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        //
+        $transaction = Transaction::findorFail($id);
+        $transactionlines = DB::table('transaction_lines')->where('transaction_id',$id)->get();
+        return view('Orders.show',['transaction'=>$transaction , 'transactionlines' => $transactionlines]);
     }
 
     /**

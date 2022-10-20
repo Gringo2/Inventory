@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Purchase;
 use App\Models\Supplier;
+use App\Models\PurchaseLine;
 use App\Http\Requests\PurchaseRequest;
 use Support\Facades\Log;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PurchaseController extends Controller
 {
@@ -63,7 +65,8 @@ class PurchaseController extends Controller
     public function show($id)
     {
         $purchase = Purchase::findorFail($id);
-        return view('Purchases.show',['purchase'=>$purchase]);
+        $purchaselines = DB::table('purchase_lines')->where('purchase_id',$id)->get();
+        return view('Purchases.show',['purchase'=>$purchase , 'purchaselines' => $purchaselines]);
     }
 
     /**

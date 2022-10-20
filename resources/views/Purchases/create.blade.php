@@ -67,7 +67,8 @@
         <table id="selected_purchase_list">
           <thead>
             {{csrf_field()}}
-            <tr>
+            <tr>  
+                  <th>Id</th>
                   <th>Product Name</th>                  
                   <th>Purchase Price</th>
                   <th>batch_no</th>

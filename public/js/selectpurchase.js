@@ -2,31 +2,41 @@ $('document').ready(function(){
     var total = 0;
     var selected_product = [];
     var product_list = $('#purchase_table').DataTable();
-    var productListTable = $('#selected_purchase_list').DataTable({retrieve:true, columns: [
+    var productListTable = $('#selected_purchase_list').DataTable({retrieve:true,
+        columnDefs: [
+            {
+                target: 0,
+                visible: true,
+                
+            },
+            
+        ]
+        , columns: [
+                {data: 'product_id'},
                 {data: 'name'},  
                 {data: 'price',
                 render: function (data, type, row, meta) {
                     return type === 'display'
-                        ? `<input type="text" id=${"price_"+row["name"]}  class="inp" name="lname" style="max-width:100px" value="${data}">`
+                        ? `<input type="text" id=${"price_"+row["product_id"]}  class="inp" name="lname" style="max-width:100px" value="${data}">`
                         : data;
                 },},
                 {data: 'batch_no',
                 render: function (data, type, row, meta) {
                     return type === 'display'
-                        ? `<input type="text" id=${"batch_"+row["name"]}  class="inp" name="lname" style="max-width:100px" value="${data}">`
+                        ? `<input type="text" id=${"batch_"+row["product_id"]}  class="inp" name="lname" style="max-width:100px" value="${data}">`
                         : data;
                 },},
                 {data: 'expire_date',
                 render: function (data, type, row, meta) {
                     return type === 'display'
-                        ? `<input type="date" id=${"expire_"+row["name"]}  class="inp" name="lname" style="max-width:130px" value="${data}">`
+                        ? `<input type="date" id=${"expire_"+row["product_id"]}  class="inp" name="lname" style="max-width:130px" value="${data}">`
                         : data;
                 },},
                 
                 {data: 'amount',
                 render: function (data, type, row, meta) {
                     return type === 'display'
-                        ? `<input type="number" class = "inp_chk" id=${"amount_" + row["name"]} style="width: 50px;" placeholder="1" step="1" min="1" max="1000" value="${data}"/>`
+                        ? `<input type="number" class = "inp_chk" id=${"amount_" + row["product_id"]} style="width: 50px;" placeholder="1" step="1" min="1" max="1000" value="${data}"/>`
                         : data;
                 },},
                 {data: 'total'}
@@ -74,13 +84,13 @@ $('document').ready(function(){
     });
     $('#selected_purchase_list tbody').on('change', '.inp', function() { 
         var n_selected_data = productListTable.row($(this).parents('tr')).data();
-        var val = $('#price_' + n_selected_data.name).val();  
-        var val2 = $('#batch_' + n_selected_data.name).val(); 
-        var val3 = $('#expire_' + n_selected_data.name).val();
+        var val = $('#price_' + n_selected_data.product_id).val();  
+        var val2 = $('#batch_' + n_selected_data.product_id).val(); 
+        var val3 = $('#expire_' + n_selected_data.product_id).val();
         console.log(val);
         console.log(val2);
         for(let i = 0; i < selected_product.length; i++ ){
-            if(selected_product[i].name == n_selected_data.name){
+            if(selected_product[i].product_id == n_selected_data.product_id){
                 selected_product[i].price = val;
                 selected_product[i].batch_no = val2;
                 selected_product[i].expire_date = val3;
@@ -102,10 +112,11 @@ $('document').ready(function(){
     });
     $('#selected_purchase_list tbody').on('change', '.inp_chk', function() {    
         var n_selected_data = productListTable.row($(this).parents('tr')).data();
-        var val = $('#amount_' + n_selected_data.name).val();
+        console.log(n_selected_data);
+        var val = $('#amount_' + n_selected_data.product_id).val();
         
         for(let i = 0; i < selected_product.length; i++ ){
-            if(selected_product[i].name == n_selected_data.name){
+            if(selected_product[i].product_id == n_selected_data.product_id){
                 selected_product[i].amount = val;
                 
                 selected_product[i].total = selected_product[i].price * selected_product[i].amount;

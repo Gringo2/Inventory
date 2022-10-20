@@ -1,7 +1,7 @@
 @extends('layout')
 @extends('layout2')
 
-@section('title','Products')
+@section('title','Purchase')
 @section('content')
 
 <div style="max-width: 80vw; margin: auto;"  >
@@ -11,44 +11,42 @@
                 <tr>
                   <th>ID</th>
 
-                  <th>Product</th>
+                  <th>Product Name</th>
 
-                  <th>Measurement</th>
+                  <th>batch_no</th>
 
-                  <th >Price</th>
+                  <th>expiry_date</th>
 
-                  <th>retail price</th>
+                  <th>amount</th>
 
-                  <th>Stock</th>
+                  <th>total</th>
 
                 </tr>
               </thead>
               <tbody>
-      @forelse($products as $product)
+      @forelse($transactionlines as $transactionline)
           
               <tr >
                 <td>
-                  <h3>{{$product->id}}</h3>
+                  <h3>{{$transactionline->id}}</h3>
                 </td>
                 <td>
-                    <h3 >{{$product->product_name}}</h3>
+                    <h3 >{{$transactionline->product_name}}</h3>
                 </td>
                 <td>
-                    {{$product->measurement}}
+                    {{$transactionline->batch_no}}
                 </td>
         
                 <td>
-                    {{$product->purchase_price}}
+                    {{$transactionline->expire_date}}
                 </td>
                 <td>
-                    {{$product->retail_price}}
+                    {{$transactionline->amount}}
                 </td>
                 <td>
-                    {{$product->stock}}
+                    {{$transactionline->total}}
                 </td>
-                <!-- <td>
-                    <a href="{{route('products.edit', ['product' => $product->id])}}">Edit</a>
-                </td> -->
+               
               </tr>
 
       @empty

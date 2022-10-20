@@ -11,44 +11,42 @@
                 <tr>
                   <th>ID</th>
 
-                  <th>Product</th>
+                  <th>Product Name</th>
 
-                  <th>Measurement</th>
+                  <th>batch_no</th>
 
-                  <th >Price</th>
+                  <th>expiry_date</th>
 
-                  <th>retail price</th>
+                  <th>amount</th>
 
-                  <th>Stock</th>
+                  <th>total</th>
 
                 </tr>
               </thead>
               <tbody>
-      @forelse($products as $product)
+      @forelse($purchaselines as $purchaseline)
           
               <tr >
                 <td>
-                  <h3>{{$product->id}}</h3>
+                  <h3>{{$purchaseline->id}}</h3>
                 </td>
                 <td>
-                    <h3 >{{$product->product_name}}</h3>
+                    <h3 >{{$purchaseline->product_name}}</h3>
                 </td>
                 <td>
-                    {{$product->measurement}}
+                    {{$purchaseline->batch_no}}
                 </td>
         
                 <td>
-                    {{$product->purchase_price}}
+                    {{$purchaseline->expire_date}}
                 </td>
                 <td>
-                    {{$product->retail_price}}
+                    {{$purchaseline->amount}}
                 </td>
                 <td>
-                    {{$product->stock}}
+                    {{$purchaseline->total}}
                 </td>
-                <!-- <td>
-                    <a href="{{route('products.edit', ['product' => $product->id])}}">Edit</a>
-                </td> -->
+               
               </tr>
 
       @empty

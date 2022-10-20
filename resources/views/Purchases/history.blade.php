@@ -4,7 +4,7 @@
 @section('title','Products')
 @section('content')
 <div style="max-width: 80vw; margin: auto;"  >
-            <table id="example">
+            <table id="mytable">
 
               <thead>
                 <tr>
