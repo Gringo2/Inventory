@@ -35,7 +35,7 @@
                     {{$purchase->user->name}}
                 </td>
                 <td> 
-                  {{$purchase->supplierid}} 
+                  {{$purchase->supplier->company_name}} 
                 </td>
                 <td>
                     {{$purchase->sub_total}}

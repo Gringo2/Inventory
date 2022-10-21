@@ -16,7 +16,7 @@ class supplier extends Model
      */
     protected $guarded = [];
 
-    public function purchase(){
+    public function purchases(){
         return $this->hasmany(Purchase::class);
     }
 }

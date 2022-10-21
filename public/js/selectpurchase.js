@@ -2,12 +2,13 @@ $('document').ready(function(){
     var total = 0;
     var selected_product = [];
     var product_list = $('#purchase_table').DataTable();
-    var productListTable = $('#selected_purchase_list').DataTable({retrieve:true,
+    var productListTable = $('#selected_purchase_list').DataTable({
+        "sDom": '"clear"&gt;',
+        retrieve:true,
         columnDefs: [
             {
                 target: 0,
                 visible: true,
-                
             },
             
         ]
@@ -29,7 +30,7 @@ $('document').ready(function(){
                 {data: 'expire_date',
                 render: function (data, type, row, meta) {
                     return type === 'display'
-                        ? `<input type="date" id=${"expire_"+row["product_id"]}  class="inp" name="lname" style="max-width:130px" value="${data}">`
+                        ? `<input type="date" id=${"expire_"+row["product_id"]}  class="inp" name="lname" style="" value="${data}">`
                         : data;
                 },},
                 

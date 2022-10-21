@@ -42,7 +42,7 @@ class PurchaseAPI extends Controller
         $purchase->user_id = Auth::User()->id;
         Log::info(Auth::user());
         $purchase->sub_total = $request['total'];
-        $purchase->supplierid = $request['supplier_id'];
+        $purchase->supplier_id = $request['supplier_id'];
         $purchase->date = now();
         $purchase->save();
 
