@@ -16,10 +16,12 @@ return new class extends Migration
         Schema::create('product_stores', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id');
-            $table->string('SN');
+            $table->string('name');
+            $table->string('sku');
             $table->string('batch_no');
             $table->string('expire_date');
-            $table->string('stock');
+            $table->Integer('stock');
+            $table->string('status');
             $table->timestamps();
         });
     }

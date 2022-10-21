@@ -25,4 +25,8 @@ class Product extends Model
     public function transaction_line(){
         return $this->hasmany(TransactionLine::class);
     }
+
+    public function product_stock(){
+        return $this->hasmany(ProductStock::class);
+    }
 }

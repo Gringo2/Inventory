@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\PurchaseLine;
 use App\Models\Purchase;
 use App\Models\Product;
+use App\Models\ProductStore;
 use App\Http\Requests\PurchaseLinePostRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
@@ -66,6 +67,16 @@ class PurchaseAPI extends Controller
             
             $product->retail_price = $newReq['price'] + ($newReq['price'] * 0.2);
             $product->save();
+
+            $product_store = new ProductStore;
+            $product_store->product_id  = $newReq['product_id'];
+            $product_store->name        = $newReq['name'];
+            $product_store->batch_no    = $newReq['batch_no'];
+            $product_store->expire_date = $newReq['expire_date'];
+            $product_store->stock       = $newReq['amount'];
+            $product_store->status      = "st";
+            $product_store->save();
+
         }
         return response()->json([
             'status' => true,
