@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('expire_date');
             $table->Integer('stock');
             $table->string('status');
+            $table->Integer('flag');
             $table->timestamps();
         });
     }

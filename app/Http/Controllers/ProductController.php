@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Measurement;
 use App\Http\Requests\StoreProductRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -45,7 +46,7 @@ class ProductController extends Controller
         $validated = $request->validated();
 
         $product = new Product;
-
+        
         $product->product_name = $request->input('product_name');
         $product->description = $request->input('description');
         $product->measurement = $request->input('measurment');
@@ -72,7 +73,8 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::findorfail($id);
-        return view('Products.list',['product'=>$product]);
+        $productstores = DB::table('product_stores')->where('product_id',$id)->get();
+        return view('Products.show',['productstores'=>$productstores]);
     }
 
     /**

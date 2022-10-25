@@ -16,10 +16,12 @@
                   <th>Measurement</th>
 
                   <th >Price</th>
-
+                  
                   <th>retail price</th>
 
                   <th>Stock</th>
+
+                  <th>Action</th>
 
                 </tr>
               </thead>
@@ -46,9 +48,10 @@
                 <td>
                     {{$product->stock}}
                 </td>
-                <!-- <td>
-                    <a href="{{route('products.edit', ['product' => $product->id])}}">Edit</a>
-                </td> -->
+                <td>
+                    <span><a href="{{route('products.edit', ['product' => $product->id])}}">Edit</a></span>
+                    <span><a href="{{route('products.show', ['product' => $product->id])}}" class="btn btn-primary" style="justify-content: center">details</a></span>
+                </td>
               </tr>
 
       @empty

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('batch_no');
             $table->integer('amount')->nullable($value = true);
             $table->float('total')->nullable($value = true);
-            $table->string('expire_date');
+            $table->date('expire_date');
             $table->timestamps();
         });
     }

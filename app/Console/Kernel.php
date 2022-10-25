@@ -4,6 +4,9 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+use App\Jobs\check_expiration;
 
 class Kernel extends ConsoleKernel
 {
@@ -16,6 +19,14 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        // $schedule->call(function () {
+        //    $product_stores = DB::table('product_stores')->get();
+        //    foreach($product_stores as $product_store){
+        //     $product_store->flag = $product_store->flag + 1;
+        //     $product_store->save();
+        //    }
+        // })->everyMinute();
+        $schedule->job(new check_expiration)->everyMinute();
     }
 
     /**

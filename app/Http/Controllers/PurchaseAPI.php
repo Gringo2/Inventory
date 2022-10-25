@@ -68,6 +68,12 @@ class PurchaseAPI extends Controller
             $product->retail_price = $newReq['price'] + ($newReq['price'] * 0.2);
             $product->save();
 
+            //condition if current batch-no and expire date match exisiting record
+
+            //get the expire date difference from current date
+            
+
+            
             $product_store = new ProductStore;
             $product_store->product_id  = $newReq['product_id'];
             $product_store->name        = $newReq['name'];
@@ -75,6 +81,8 @@ class PurchaseAPI extends Controller
             $product_store->expire_date = $newReq['expire_date'];
             $product_store->stock       = $newReq['amount'];
             $product_store->status      = "st";
+            $product_store->flag        = 1;
+
             $product_store->save();
 
         }

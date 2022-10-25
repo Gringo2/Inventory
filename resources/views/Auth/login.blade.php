@@ -1,6 +1,6 @@
 <html>
 <head>
-        <title>Register </title>        
+        <title>Login</title>        
         <link href="css/auth.css" rel="stylesheet" />
 </head>
 <body>

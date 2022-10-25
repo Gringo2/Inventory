@@ -21,12 +21,15 @@ use App\Http\Controllers\TransactionAPI;
 |
 */
 
-Route::get('/', function () {
-    return view('Dashboard');
-});
-route::get('/dashboard',function(){
-    return view('Dashboard');
-})->name('dashboard');
+Route::get('/', function () { 
+
+    return view('Dashboard');})
+    ->middleware('auth');
+
+route::get('/dashboard',function(){ 
+    return view('Dashboard'); })
+    ->name('dashboard')
+    ->middleware('auth');
 
 Route::match( ['get','post'], '/register', [AuthController::class,'register'])
 ->name('register')->middleware('guest');
@@ -37,25 +40,25 @@ Route::match( ['get','post'], '/login' ,[AuthController::class,'login'])
 Route::get('/logout', [AuthController::class, 'logout'])
 ->name('logout')->middleware('auth');
 
-Route::get('/products/list', [ProductController::class , 'list'])
+Route::get('/products/list', [ProductController::class,'list'])
 ->name('products.list');
 
 Route::resource('products', ProductController::class)
 ->middleware('auth');
 
-Route::get('/categories/list', [CategoryController::class , 'list'])
+Route::get('/categories/list', [CategoryController::class,'list'])
 ->name('categories.list');
 
 Route::resource('categories', CategoryController::class)->except('index')
 ->middleware('auth');
 
-Route::get('/customers/list', [CustomerController::class , 'list'])
+Route::get('/customers/list', [CustomerController::class,'list'])
 ->name('customers.list');
 
 Route::resource('customers', CustomerController::class)->except('index')
 ->middleware('auth');
 
-Route::get('/suppliers/list', [SupplierController::class , 'list'])
+Route::get('/suppliers/list', [SupplierController::class,'list'])
 ->name('suppliers.list');
 
 Route::resource('suppliers', SupplierController::class)->except('index')
