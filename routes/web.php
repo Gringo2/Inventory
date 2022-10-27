@@ -66,6 +66,9 @@ Route::resource('suppliers', SupplierController::class)->except('index')
 
 Route::resource('purchase', PurchaseController::class)->middleware('auth');
 
+Route::get('/transactions/detail/{id}', [TransactionController::class,'detail'])
+->name('transactions.detail');
+
 Route::resource('transactions', TransactionController::class)->middleware('auth');
 
 Route::apiResource('purchasecart', PurchaseAPI::class)->middleware('api');

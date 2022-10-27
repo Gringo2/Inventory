@@ -8,6 +8,8 @@ use App\Models\Measurement;
 use App\Http\Requests\StoreProductRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 class ProductController extends Controller
 {
@@ -74,6 +76,16 @@ class ProductController extends Controller
     {
         $product = Product::findorfail($id);
         $productstores = DB::table('product_stores')->where('product_id',$id)->get();
+        $now = Carbon::now();
+        foreach($productstores as $productstore){
+            $expire_date = Carbon::parse($productstore->expire_date);
+            Log::info($expire_date);
+            $diff_in_months = $now->diffInMonths($expire_date);
+            Log::info($diff_in_months);
+            $productstore->month_to_expire = $diff_in_months;
+            Log::info($productstore->month_to_expire);
+            
+        }
         return view('Products.show',['productstores'=>$productstores]);
     }
 

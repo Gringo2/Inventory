@@ -13,13 +13,11 @@
 
                   <th>Product Name</th>
 
-                  <th>batch_no</th>
-
-                  <th>expiry_date</th>
-
                   <th>amount</th>
 
                   <th>total</th>
+
+                  <th>action</th>
 
                 </tr>
               </thead>
@@ -34,19 +32,16 @@
                     <h3 >{{$transactionline->product_name}}</h3>
                 </td>
                 <td>
-                    {{$transactionline->batch_no}}
-                </td>
-        
-                <td>
-                    {{$transactionline->expire_date}}
-                </td>
-                <td>
                     {{$transactionline->amount}}
                 </td>
                 <td>
                     {{$transactionline->total}}
                 </td>
-               
+                <td>
+                <td>
+                  <a href="{{route('transactions.detail', ['transactionline'=>$transactionline->id,])}}" class="btn btn-primary" style="justify-content: center;">details</a>
+                </td>
+                </td>
               </tr>
 
       @empty

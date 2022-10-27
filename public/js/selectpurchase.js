@@ -8,7 +8,7 @@ $('document').ready(function(){
         columnDefs: [
             {
                 target: 0,
-                visible: true,
+                visible: false,
             },
             
         ]

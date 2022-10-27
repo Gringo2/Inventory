@@ -2,22 +2,23 @@ $('document').ready(function(){
     var total = 0;
     var selected_product = [];
     var product_list = $('#mytable').DataTable();
-    var productListTable = $('#selected_product_list').DataTable({retrieve:true, columns: [
-                {data: 'name'},  
+    var productListTable = $('#selected_product_list').DataTable({
+        retrieve:true,
+        columnDefs: [
+            {
+                target: 0,
+                visible: false,
+            },
+            
+        ],
+        columns: [
+                {data: 'product_id'},
+                {data: 'name'},
                 {data: 'price'},
-                {data: 'unit',
-                render: function (data, type, row, meta) {
-                    return type === 'display'
-                        ? '<select name="" id="pet-select">'+ 
-                        '<option value="1">unit1</option>' +
-                        '<option value="2">unit2</option>' 
-                        + '</select>'
-                        : data;
-                },},
                 {data: 'amount',
                 render: function (data, type, row, meta) {
                     return type === 'display'
-                        ? `<input type="number" class = "inp_chk" id=${"amount_" + row["name"]} style="width: 50px;" placeholder="1" step="1" min="1" max="1000" value="${data}"/>`
+                        ? `<input type="number" class = "inp_chk" id=${"amount_" + row["product_id"]} style="width: 50px;" placeholder="1" step="1" min="1" max="1000" value="${data}"/>`
                         : data;
                 },},
                 {data: 'total'}
@@ -27,12 +28,17 @@ $('document').ready(function(){
         var selected_data = product_list.row($(this).parents('tr')).data();
         if($(this).is(':checked')){
             var value = 1;
-            var prodObj = {'product_id':selected_data[1],'name': selected_data[2], 'price':selected_data[4] ,
-            'amount': value , 'total': selected_data[4]*value, 'unit': 1}
+            var prodObj = {
+                'product_id':selected_data[1],
+                'name': selected_data[2], 
+                'price':selected_data[4] ,
+                'amount': value , 
+                'total': selected_data[4]*value,
+            }
             selected_product.push(prodObj);
             //detect increase in amount
             // console.log(selected_product.length);
-            // console.log(selected_product);
+            console.log(selected_product);
             productListTable.clear().rows.add(selected_product).draw();
             total = 0;
             for(let i = 0; i < selected_product.length; i++){
@@ -57,7 +63,7 @@ $('document').ready(function(){
     });
     $('#selected_product_list tbody').on('change', '.inp_chk', function() {    
         var n_selected_data = productListTable.row($(this).parents('tr')).data();
-        var val = $('#amount_' + n_selected_data.name).val();  
+        var val = $('#amount_' + n_selected_data.product_id).val();  
         for(let i = 0; i < selected_product.length; i++ ){
             if(selected_product[i].name == n_selected_data.name){
                 selected_product[i].amount = val;
@@ -85,7 +91,7 @@ $('document').ready(function(){
             $.ajax(
                 {
                 // data:{"product_name":selected_product[0].name, "unit":selected_product[0].price},
-                   data: { data: selected_product , total: total , customer_id : $('customer_id').val()},
+                   data: { data: selected_product , total: total , customer_id : $('#customer_id').val()},
                    headers: {'X-CSRF-TOKEN': $('input[name="_token"]').val()},
                    type: "POST",
                    url:"/transactioncart",

@@ -16,14 +16,9 @@
 
                   <th>Product</th>
 
-                  <th>Measurement</th>
-
-                 
+                  <th>Unit</th>
 
                   <th>Price</th>
-
-                  <th>In Stock</th>
-
                 </tr>
               </thead>
 
@@ -44,16 +39,10 @@
                 <td>
                   {{$product->measurement}}
                 </td>
-                <td>
-                    {{$product->retail_price}}
-                </td>
 
                 <td>
-                    yes
+                  {{$product->purchase_price}}
                 </td>
-
-                
-
                 </tr>
 
       @empty
@@ -66,7 +55,7 @@
 </div>
 <section class="tasks">
         <div class="input-field">
-                            <label>Supplier  </label>
+                            <label>Customer</label>
                             <select  name = "supplierid" id="customer_id">
                                 <option disabled selected>Select Customer</option>
                                 
@@ -81,10 +70,10 @@
         <table id="selected_product_list">
           <thead>
             {{csrf_field()}}
-            <tr>
-                  <th>Product Name</th>                  
+            <tr>  
+                  <th>id</th>
+                  <th>ProductName</th>                  
                   <th>UnitPrice</th>
-                  <th>Unit</th>
                   <th>Amount</th>
                   <th>Total</th>                 
             </tr>
@@ -101,7 +90,7 @@
         <button class="btn btn-primary" data-load-more id="btn_send_order_body">
           <span class="spiner"></span>
 
-          <span>Place Purchase</span>
+          <span>Place Order</span>
         </button>
 
       </section>

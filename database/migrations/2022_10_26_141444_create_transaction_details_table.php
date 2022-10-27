@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('transaction_lines', function (Blueprint $table) {
+        Schema::create('transaction_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id');
-            $table->foreignId('transaction_id');
-            $table->string('product_name');
-            $table->float('unit_price');
-            $table->integer('amount');
-            $table->float('total');
+            $table->foreignId('transactionline_id');
+            $table->foreignId('productstore_id');
+            $table->Integer('amount');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transaction_lines');
+        Schema::dropIfExists('transaction_details');
     }
 };

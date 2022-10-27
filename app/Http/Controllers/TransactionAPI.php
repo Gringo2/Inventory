@@ -5,8 +5,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\TransactionLine;
 use App\Models\Transaction;
 use App\Models\Product;
+use App\Models\ProductStore;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TransactionAPI extends Controller
 {
@@ -51,13 +53,39 @@ class TransactionAPI extends Controller
                 'transaction_id'   => $transaction->id,
                 'product_name'  => $newReq['name'],
                 'unit_price'    => $newReq['price'],
-                'unit'          => $newReq['unit'],
-                'batch_no'      => 112,
                 'amount'        => $newReq['amount'],
                 'total'         => $newReq['total'],
-                'expire_date'   => 12/11/11
                 ]
             );
+            //fetch product variants sort by expire date
+            $product_stores =    DB::table('product_stores')
+                                ->where('product_id',$transactionline->product_id)
+                                ->orderby('month_to_expire','asc')->get();
+            Log::info($product_stores);
+
+            $amount = $newReq['amount'];
+
+            $size = $product_stores->count();
+            $array = array();
+            $i = 0;
+            foreach($product_stores as $product_store){
+                
+                
+                if($amount > $product_store->stock){
+                    $array[$i]  = $product_store->stock;
+                    $amount = $amount - $product_store->stock;
+                    $i++;
+                }
+                else{
+                    $array[$i] = $amount;
+                    break;
+                    $i++;
+                }
+                
+            }
+            Log::info($array);
+            
+            //order close expire dates first
             $product = Product::findorfail($newReq['product_id']);
             $product->stock = $product->stock - $newReq['amount'];
             
@@ -90,7 +118,7 @@ class TransactionAPI extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

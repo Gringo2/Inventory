@@ -19,6 +19,8 @@
 
                   <th>stock</th>
 
+                  <th>status</th>
+
                 </tr>
               </thead>
               <tbody>
@@ -40,6 +42,22 @@
                 </td>
                 <td>
                     {{$product->stock}}
+                </td>
+                <td>
+                    {{$product->month_to_expire}}
+                    <!-- <li class="progress-item"> -->
+
+              <!-- <div class="progress-label">
+                <p class="progress-title">Project Completion</p>
+
+                <data class="progress-data" value="85">85%</data>
+              </div> -->
+
+              <div class="progress-bar" style="max-width:40px;">
+                <div class="progress" style="--width: 100%; --bg: var(--blue-ryb);"></div>
+              </div>
+
+            <!-- </li> -->
                 </td>
                
               </tr>

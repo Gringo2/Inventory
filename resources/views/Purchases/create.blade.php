@@ -16,7 +16,7 @@
 
                   <th>Product</th>
 
-                  <th>Measurement</th>
+                  <th>Unit</th>
 
                  
                 </tr>
@@ -70,7 +70,7 @@
             <tr>  
                   <th>Id</th>
                   <th>Product Name</th>                  
-                  <th>Purchase Price</th>
+                  <th>Unit Price</th>
                   <th>batch_no</th>
                   <th>Expire Date</th>
                   <th>Amount</th>

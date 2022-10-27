@@ -181,7 +181,16 @@
   });
 
   $(document).ready( function () {
-    $('#mytable').DataTable();
+    $('#mytable').DataTable({
+      retrieve:true,
+      columnDefs: [
+            {
+                target: 2,
+                visible: false,
+            },
+            
+        ]
+    });
 } );
   </script>
   
