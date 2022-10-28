@@ -79,7 +79,7 @@ class PurchaseAPI extends Controller
 
             $product_store->save();
 
-            //variant
+            //remaining date refresh
             $productstores = ProductStore::all();
             $now = Carbon::now();
             $stock = 0;

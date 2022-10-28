@@ -63,8 +63,8 @@ class TransactionAPI extends Controller
                                 ->orderby('month_to_expire','asc')->get();
             Log::info($product_stores);
 
+            //getting stock arrangement
             $amount = $newReq['amount'];
-
             $size = $product_stores->count();
             $array = array();
             $i = 0;
@@ -79,13 +79,30 @@ class TransactionAPI extends Controller
                 else{
                     $array[$i] = $amount;
                     break;
-                    $i++;
+                    
                 }
                 
             }
             Log::info($array);
+
+            $product_stores =    DB::table('product_stores')
+            ->where('product_id',$transactionline->product_id)
+            ->orderby('month_to_expire','asc')->take($i+1)->get();
+            Log::info($product_stores);
+
+            //decrease values from respective stock
+            $j = 0;
+            foreach($product_stores as $product_store){
+                $product_store->stock = $product_store->stock - $array[$j];
+                $stock_change = DB::table('product_stores')
+                            ->where('sku', $product_store->sku)
+                            ->update(['stock' => $product_store->stock]);
+                $j++;
+            }
+
             
-            //order close expire dates first
+
+            
             $product = Product::findorfail($newReq['product_id']);
             $product->stock = $product->stock - $newReq['amount'];
             
