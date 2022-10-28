@@ -4,13 +4,12 @@
 @section('title','Products')
 @section('content')
 <div style="max-width: 80vw; margin: auto;"  >
-            <table id="example">
+            <table id="mytable">
 
               <thead>
                 <tr>
 
                   <th></th>
-                  <th>ID</th>
 
                   <th>User</th>
 
@@ -28,9 +27,6 @@
           
               <tr >
                 <td></td>
-                <td>
-                  <h3>{{$transaction->id}}</h3>
-                </td>
                 <td>
                     {{$transaction->user->name}}
                 </td>

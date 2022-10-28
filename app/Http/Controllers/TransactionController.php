@@ -7,6 +7,7 @@ use App\Models\Transaction;
 use APp\Models\TransactionLines;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class TransactionController extends Controller
 {
@@ -17,7 +18,11 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::all();
+        $transactions = Transaction::orderBy('date', 'desc')->get();
+        foreach($transactions as $transaction){
+            $date = Carbon::parse($transaction->date);
+            $transaction->date = $date->toFormattedDateString();
+        }
         return view('Orders.history', ['transactions' => $transactions]);
     }
 
@@ -54,6 +59,8 @@ class TransactionController extends Controller
     {
         $transaction = Transaction::findorFail($id);
         $transactionlines = DB::table('transaction_lines')->where('transaction_id',$id)->get();
+        $date = Carbon::parse($transaction->date);
+        $transaction->date = $date->toDayDateTimeString();
         return view('Orders.show',['transaction'=>$transaction , 'transactionlines' => $transactionlines]);
     }
 

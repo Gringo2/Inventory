@@ -9,6 +9,7 @@ use App\Http\Requests\PurchaseRequest;
 use Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class PurchaseController extends Controller
 {
@@ -19,7 +20,11 @@ class PurchaseController extends Controller
      */
     public function index()
     {   
-        $purchases = Purchase::all();
+        $purchases = Purchase::orderBy('date', 'desc')->get();
+        foreach($purchases as $purchase){
+            $date = Carbon::parse($purchase->date);
+            $purchase->date = $date->toFormattedDateString();
+        }
         return view('Purchases.history', ['purchases' => $purchases]);
     }
 
@@ -66,6 +71,8 @@ class PurchaseController extends Controller
     {
         $purchase = Purchase::findorFail($id);
         $purchaselines = DB::table('purchase_lines')->where('purchase_id',$id)->get();
+        $date = Carbon::parse($purchase->date);
+        $purchase->date = $date->toDayDateTimeString();
         return view('Purchases.show',['purchase'=>$purchase , 'purchaselines' => $purchaselines]);
     }
 

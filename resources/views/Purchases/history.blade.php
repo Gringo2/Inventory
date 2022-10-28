@@ -10,7 +10,7 @@
                 <tr>
 
                   <th></th>
-                  <th>ID</th>
+                  
 
                   <th>User</th>
 
@@ -28,9 +28,7 @@
           
               <tr >
                 <td></td>
-                <td>
-                  <h3>{{$purchase->id}}</h3>
-                </td>
+                
                 <td>
                     {{$purchase->user->name}}
                 </td>
