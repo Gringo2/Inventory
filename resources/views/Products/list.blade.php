@@ -5,7 +5,8 @@
 @section('content')
 
 <div style="max-width: 80vw; margin: auto;"  >
-            <table id="mytable" >
+            <h2 class="h2 article-title">Products List</h2>
+            <table id="mytable" class="content-table" >
 
               <thead>
                 <tr>
@@ -16,6 +17,8 @@
                   <th>Measurement</th>
 
                   <th >Price</th>
+
+                  <th>WholeSale Price</th>
                   
                   <th>retail price</th>
 
@@ -43,13 +46,16 @@
                     {{$product->purchase_price}}
                 </td>
                 <td>
+                  {{$product->wholesale}}
+                </td>
+                <td>
                     {{$product->retail_price}}
                 </td>
                 <td>
                     {{$product->stock}}
                 </td>
-                <td>
-                    <span><a href="{{route('products.edit', ['product' => $product->id])}}">Edit</a></span>
+                <td style ="display:flex;">
+                    <span><a href="{{route('products.edit', ['product' => $product->id])}}" class="btn btn-primary" style="justify-content: center; margin-right:10px;">Edit</a></span>
                     <span><a href="{{route('products.show', ['product' => $product->id])}}" class="btn btn-primary" style="justify-content: center">details</a></span>
                 </td>
               </tr>

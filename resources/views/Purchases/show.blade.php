@@ -5,7 +5,7 @@
 @section('content')
           <style>
 			.invoice-box {
-				max-width: 800px;
+				max-width: 1100px;
 				margin: auto;
 				padding: 30px;
 				border: 1px solid #eee;

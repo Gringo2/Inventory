@@ -5,6 +5,7 @@ use App\Models\Product;
 use App\Models\Supplier;
 use App\Models\Category;
 use App\Models\Measurement;
+use App\Models\ProductStore;
 use App\Http\Requests\StoreProductRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,9 +33,9 @@ class ProductController extends Controller
     {   
         $suppliers = Supplier::all();
         $categories = Category::all();
-        $measurements = Measurement::all();
+        
         return view('Products.create',['suppliers' => $suppliers, 
-        'categories' => $categories , 'measurements' => $measurements]);
+        'categories' => $categories]);
     }
 
     /**
@@ -52,10 +53,6 @@ class ProductController extends Controller
         $product->product_name = $request->input('product_name');
         $product->description = $request->input('description');
         $product->measurement = $request->input('measurment');
-        $product->quantity = $request->input('quantity');
-       
-        
-
         $product->save();
 
         return redirect()
@@ -75,7 +72,11 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::findorfail($id);
-        $productstores = DB::table('product_stores')->where('product_id',$id)->get();
+        $productstores = ProductStore::where('product_id',$id)
+                                    ->where('stock', '>' ,'0')
+                                    ->orderBy('expire_date','desc')
+                                    ->get();
+        Log::info($productstores);
         $now = Carbon::now();
         foreach($productstores as $productstore){
             $expire_date = Carbon::parse($productstore->expire_date);
@@ -142,8 +143,17 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function list(){
-
+        
         $products = Product::all();
+        foreach($products as $product){
+            $stock = 0;
+        $product_variants = ProductStore::where('product_id',$product->id)->get();
+            foreach($product_variants  as $product_variant){
+                $stock = $stock + $product_variant->stock;
+            }
+            $product->stock = $stock;
+            $product->save();
+        }
         return view('Products.list',['products' => $products]);
     }
 }

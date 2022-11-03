@@ -50,6 +50,7 @@ class PurchaseAPI extends Controller
 
         foreach($request['data'] as $newReq)
         {
+            //save current purchase invoice
             $purchaseline = PurchaseLine::create([
                 'product_id'    => $newReq['product_id'],
                 'purchase_id'   => $purchase->id,
@@ -65,8 +66,12 @@ class PurchaseAPI extends Controller
 
             //condition if current batch-no and expire date match exisiting record
 
+            
+
             //get the expire date difference from current date
             
+            $now = Carbon::now();
+            $stock = 0;
             $product_store = new ProductStore;
             $product_store->product_id  = $newReq['product_id'];
             $product_store->name        = $newReq['name'];
@@ -75,35 +80,41 @@ class PurchaseAPI extends Controller
             $product_store->stock       = $newReq['amount'];
             $product_store->status      = "st";
             $product_store->flag        = 1;
-            $product_store->month_to_expire = 1;
+            //set month to expire
+            $expire_date = Carbon::parse($product_store->expire_date);
+            $diff_in_months = $now->diffInMonths($expire_date);
+            $product_store->month_to_expire = $diff_in_months;
 
             $product_store->save();
-
-            //remaining date refresh
-            $productstores = ProductStore::all();
-            $now = Carbon::now();
-            $stock = 0;
-            foreach($productstores as $productstore){
-                $expire_date = Carbon::parse($productstore->expire_date);
-                Log::info($expire_date);
-                $diff_in_months = $now->diffInMonths($expire_date);
-                Log::info($diff_in_months);
-                $productstore->month_to_expire = $diff_in_months;
-                Log::info($productstore->month_to_expire);
-                $stock = $stock + $productstore->stock;
-                $productstore->save();  
-            }            
-
+            //get the current product
             $product = Product::findorfail($newReq['product_id']);
             //save variant stock count sum
+            //call out specific variant
+            $product_variants = ProductStore::where('product_id',$newReq['product_id'])->get();
+            foreach($product_variants  as $product_variant){
+                $stock = $stock + $product_variant->stock;
+            }
+
             $product->stock = $stock;
             $product->purchase_price = $newReq['price'];
-            
-            $product->retail_price = $newReq['price'] + ($newReq['price'] * 0.2);
+            $product->retail_price = $newReq['price'] + ($newReq['price'] * 0.3);
+            $product->wholesale = $newReq['price']  + ($newReq['price'] * 0.2);
             $product->save();
+            //remaining date refresh
 
-            
-            
+            $productstores = ProductStore::all();
+            //refresh months to expire with every purchase
+            foreach($productstores as $productstore){  
+                //get the expire date          
+                $expire_date = Carbon::parse($productstore->expire_date);
+                //calculate diff in months from now   
+                $diff_in_months = $now->diffInMonths($expire_date);
+    
+                $productstore->month_to_expire = $diff_in_months;
+
+                $productstore->save();  
+            }            
+ 
 
         }
         return response()->json([

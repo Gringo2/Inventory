@@ -6,6 +6,7 @@ use App\Models\TransactionLine;
 use App\Models\Transaction;
 use App\Models\Product;
 use App\Models\ProductStore;
+use App\Models\Customer;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -42,24 +43,18 @@ class TransactionAPI extends Controller
         $transaction->user_id = Auth::User()->id;
         Log::info(Auth::user());
         $transaction->sub_total = $request['total'];
-        $transaction->customerid = $request['customer_id'];
+        $transaction->customer_id = $request['customer_id'];
         $transaction->date = now();
         $transaction->save();
 
+        $customer = Customer::findorfail($request['customer_id']);
+        
         foreach($request['data'] as $newReq)
-        {
-            $transactionline = TransactionLine::create([
-                'product_id'    => $newReq['product_id'],
-                'transaction_id'   => $transaction->id,
-                'product_name'  => $newReq['name'],
-                'unit_price'    => $newReq['price'],
-                'amount'        => $newReq['amount'],
-                'total'         => $newReq['total'],
-                ]
-            );
+        {   
             //fetch product variants sort by expire date
             $product_stores =    DB::table('product_stores')
-                                ->where('product_id',$transactionline->product_id)
+                                ->where('product_id', $newReq['product_id'])
+                                ->where('stock' , '>' , '0')
                                 ->orderby('month_to_expire','asc')->get();
             Log::info($product_stores);
 
@@ -69,7 +64,6 @@ class TransactionAPI extends Controller
             $array = array();
             $i = 0;
             foreach($product_stores as $product_store){
-                
                 
                 if($amount > $product_store->stock){
                     $array[$i]  = $product_store->stock;
@@ -81,12 +75,12 @@ class TransactionAPI extends Controller
                     break;
                     
                 }
-                
             }
             Log::info($array);
 
             $product_stores =    DB::table('product_stores')
-            ->where('product_id',$transactionline->product_id)
+            ->where('product_id',$newReq['product_id'])
+            ->where('stock' , '>' , '0')
             ->orderby('month_to_expire','asc')->take($i+1)->get();
             Log::info($product_stores);
 
@@ -97,10 +91,20 @@ class TransactionAPI extends Controller
                 $stock_change = DB::table('product_stores')
                             ->where('sku', $product_store->sku)
                             ->update(['stock' => $product_store->stock]);
+               
+
+                $transactionline = TransactionLine::create([
+                    'product_store_id'    => $product_store->id,
+                    'transaction_id'   => $transaction->id,
+                    'product_name'  => $newReq['name'],
+                    'unit_price'    => $newReq['price'],
+                    'amount'        => $array[$j],
+                    'total'         => $newReq['price'] * $array[$j],
+                    ]
+                );
+
                 $j++;
             }
-
-            
 
             
             $product = Product::findorfail($newReq['product_id']);

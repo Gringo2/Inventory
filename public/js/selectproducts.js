@@ -1,6 +1,7 @@
 $('document').ready(function(){
     var total = 0;
     var selected_product = [];
+    var valuator = 0;
     var product_list = $('#mytable').DataTable();
     var productListTable = $('#selected_product_list').DataTable({
         retrieve:true,
@@ -23,21 +24,31 @@ $('document').ready(function(){
                 },},
                 {data: 'total'}
            ]});
+
            
     $('#mytable tbody').on('change', '.selectProduct', function(){
         var selected_data = product_list.row($(this).parents('tr')).data();
         if($(this).is(':checked')){
+            
             var value = 1;
             var prodObj = {
                 'product_id':selected_data[1],
                 'name': selected_data[2], 
-                'price':selected_data[4] ,
+                'price':selected_data[5] ,
+                'wholesale' : selected_data[4],
+                'retail' : selected_data[5],
                 'amount': value , 
                 'total': selected_data[4]*value,
             }
             selected_product.push(prodObj);
             //detect increase in amount
-            // console.log(selected_product.length);
+            
+            if($('#wholesale').is(':checked')){
+                for(let i = 0; i < selected_product.length; i++){
+                    selected_product[i].price = selected_product[i].wholesale;
+                    console.log('---');
+                }
+            }
             console.log(selected_product);
             productListTable.clear().rows.add(selected_product).draw();
             total = 0;
@@ -61,6 +72,27 @@ $('document').ready(function(){
             
         }
     });
+   
+    $('#wholesale').on('change',function() { 
+        if (!$(this).is(':checked')) { 
+                for(let i = 0; i < selected_product.length; i++){
+                    selected_product[i].price = selected_product[i].retail;
+                }
+                console.log("if");
+                productListTable.clear().rows.add(selected_product).draw();
+                console.log($('#wholesale').is(':checked'));
+            }else{
+                for(let i = 0; i < selected_product.length; i++){
+                    selected_product[i].price = selected_product[i].wholesale;
+                    
+                }
+                productListTable.clear().rows.add(selected_product).draw();
+                console.log("else");
+                console.log($('#wholesale').is(':checked'));
+            }
+            
+        });
+      
     $('#selected_product_list tbody').on('change', '.inp_chk', function() {    
         var n_selected_data = productListTable.row($(this).parents('tr')).data();
         var val = $('#amount_' + n_selected_data.product_id).val();  
@@ -99,7 +131,12 @@ $('document').ready(function(){
                        console.log(data);
                    }
                }
-            )
+            ).done(function() {
+                window.location.replace("http://localhost/transactions");
+              })
+              .fail(function() {
+                alert( "Request failed. Contact system admin if error persists. ");
+              })
         
    });
 });

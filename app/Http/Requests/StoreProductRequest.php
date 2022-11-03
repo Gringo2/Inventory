@@ -27,7 +27,6 @@ class StoreProductRequest extends FormRequest
             "product_name" => 'required',
             "description" => 'required',
             "measurment" => "required",
-            "quantity" => 'required',
         ];
     }
 }

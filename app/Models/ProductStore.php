@@ -21,5 +21,9 @@ class ProductStore extends Model
     public function product(){
         return $this->belongsTo(Product::class);
     }
+    
+    public function transaction_line(){
+        return $this->hasmany(TransactionLine::class);
+    }
 
 }

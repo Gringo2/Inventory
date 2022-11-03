@@ -5,7 +5,7 @@
 @section('content')
 
 <div style="max-width: 80vw; margin: auto;">
-            <table id="mytable">
+            <table id="mytable" class="content-table">
 
               <thead>
                 <tr>

@@ -17,7 +17,7 @@ return new class extends Migration
             $value = 1;
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('customerid');
+            $table->foreignId('customer_id');
             $table->float('sub_total')->default($value);
             $table->dateTime('date', $precision = 0);
             $table->timestamps();

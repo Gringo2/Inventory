@@ -54,6 +54,19 @@
                             @enderror
                             
                         </div>
+                        <div class="input-field">
+                            <label>Customer Type</label>
+                            <select  name = "measurment">
+                                <option disabled selected>Type</option>
+                                <option value="Wholesale">Wholesale</option>
+                                <option value="Retail">Retail</option>    
+                            </select>
+                            @error('measurment')
+                            <div class="error">
+                                {{$message}}
+                            </div>
+                            @enderror
+                        </div>
 
                         
                         

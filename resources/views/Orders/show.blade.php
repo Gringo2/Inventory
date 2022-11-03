@@ -5,7 +5,7 @@
 @section('content')
           <style>
 			.invoice-box {
-				max-width: 800px;
+				max-width: 1100px;
 				margin: auto;
 				padding: 30px;
 				border: 1px solid #eee;
@@ -112,7 +112,8 @@
 								<td>
 									InvoiceID #: {{$transaction->id}}<br />
 									Created: {{$transaction->date}}<br />
-									Customer:
+									Customer:						<br/>
+									User: 
 								</td>
 							</tr>
 						</table>
@@ -121,20 +122,21 @@
 
 				<tr class="heading">
 					<td>Item</td>
-          <td>batch_no</td>
+          			<td>SN</td>
 					<td>Price</td>
-          <td>Amount</td>
-          <td>total</td>
+          			<td>Amount</td>
+          			<td>total</td>
 				</tr>
           @foreach($transactionlines as $transactionline)
 				<tr class="item">
 					<td>{{$transactionline->product_name}}</td>
-          <td></td>
+          <td>{{$transactionline->product_store->sku}}</td>
           <td>{{$transactionline->unit_price}} Br.</td>
           <td>{{$transactionline->amount}}</td>
           <td>{{$transactionline->total}}</td>
 				</tr>
         @endforeach
+			
 
 				<tr class="total">
 					<td></td>

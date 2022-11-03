@@ -151,7 +151,12 @@ $('document').ready(function(){
                        console.log(data);
                    }
                }
-            )
+            ).done(function() {
+                window.location.replace("http://localhost/purchase");
+              })
+              .fail(function() {
+                alert( "Request failed. Contact system admin if error persists. ");
+              })
         
    });
 });

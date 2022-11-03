@@ -37,21 +37,15 @@
                             <label>Measurment</label>
                             <select  name = "measurment">
                                 <option disabled selected>Select Measurement</option>
-                                @foreach($measurements as $measurment)
+                               
                                 
-                                <option value="{{$measurment->name}}">{{$measurment->name}}</option>
-                            @endforeach
+                                <option value="PK">PK</option>
+                                <option value="BOX">Box</option>
+                                <option value="Tin">Tin</option>
+                                <option value="Bottle">Bottle</option>
+                                
                             </select>
                             @error('measurment')
-                            <div class="error">
-                                {{$message}}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="input-field">
-                            <label>Quantity</label>
-                            <input type="text" name="quantity"placeholder="quantity" required>
-                            @error('quantity')
                             <div class="error">
                                 {{$message}}
                             </div>

@@ -22,7 +22,8 @@ class TransactionLine extends Model
 
     }
 
-    public function product(){
-        return $this->belongsTo(Product::class);
+    public function product_store(){
+        return $this->belongsTo(ProductStore::class);
     }
+
 }

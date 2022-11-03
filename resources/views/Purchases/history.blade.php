@@ -4,7 +4,8 @@
 @section('title','Products')
 @section('content')
 <div style="max-width: 80vw; margin: auto;"  >
-            <table id="mytable">
+            <h2 class="h2 article-title">Purchase Invoices</h2>
+            <table id="mytable" class="content-table">
 
               <thead>
                 <tr>
@@ -41,8 +42,8 @@
                 <td>
                     {{$purchase->date}}
                 </td>
-                <td>
-                  <a href="{{route('purchase.show', ['purchase'=>$purchase->id])}}" class="btn btn-primary" style="justify-content: center;">details</a>
+                <td style="display:flex;">
+                  <a href="{{route('purchase.show', ['purchase'=>$purchase->id])}}" class="btn btn-primary" style="justify-content: center; max-width:100px; margin:auto;">details</a>
                 </td>
               </tr>
       @empty

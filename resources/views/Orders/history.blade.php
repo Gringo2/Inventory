@@ -4,7 +4,8 @@
 @section('title','Products')
 @section('content')
 <div style="max-width: 80vw; margin: auto;"  >
-            <table id="mytable">
+            <h2 class="h2 article-title">Order Invoices</h2>
+            <table id="mytable" class="content-table">
 
               <thead>
                 <tr>
@@ -31,7 +32,7 @@
                     {{$transaction->user->name}}
                 </td>
                 <td>  
-                  {{$transaction->customerid}}
+                  {{$transaction->customer->company_name}}
                 </td>
                 <td>
                     {{$transaction->sub_total}}
@@ -39,8 +40,8 @@
                 <td>
                     {{$transaction->date}}
                 </td>
-                <td>
-                  <a href="{{route('transactions.show', ['transaction'=>$transaction->id])}}" class="btn btn-primary" style="justify-content: center;">details</a>
+                <td style="display:flex;">
+                  <a href="{{route('transactions.show', ['transaction'=>$transaction->id])}}" class="btn btn-primary" style="justify-content: center; max-width:100px; margin:auto;">details</a>
                 </td>
               </tr>
       @empty

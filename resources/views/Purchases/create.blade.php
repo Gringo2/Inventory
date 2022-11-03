@@ -5,7 +5,7 @@
 @section('content')
 <div style="display:flex;">
 <div class="table-container">
-            <table id="purchase_table">
+            <table id="purchase_table" class="content-table">
 
               <thead>
                 <tr>
@@ -64,7 +64,7 @@
                            
                             
                         </div>
-        <table id="selected_purchase_list">
+        <table id="selected_purchase_list" class="content-table">
           <thead>
             {{csrf_field()}}
             <tr>  

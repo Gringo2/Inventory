@@ -22,11 +22,7 @@ class Product extends Model
 
     }
 
-    public function transaction_line(){
-        return $this->hasmany(TransactionLine::class);
-    }
-
-    public function product_stock(){
+    public function product_store(){
         return $this->hasmany(ProductStore::class);
     }
 }

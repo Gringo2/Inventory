@@ -17,13 +17,12 @@ return new class extends Migration
             $value = 0;
             $table->id();
             $table->string('product_name');
-            $table->text('description');         
+            $table->text('description');
             $table->string('measurement');
-            $table->string('quantity');
             $table->float('purchase_price')->default($value);
+            $table->float('wholesale')->default($value);
             $table->float('retail_price')->default($value);
             $table->integer('stock')->default($value);
-            $table->foreignId('categoryid')->default($value);
             $table->timestamps();
         });
     }

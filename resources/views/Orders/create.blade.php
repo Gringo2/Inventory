@@ -5,7 +5,7 @@
 @section('content')
 <div style="display:flex;">
 <div class="table-container">
-            <table id="mytable">
+            <table id="mytable" class="content-table">
 
               <thead>
                 <tr>
@@ -17,6 +17,8 @@
                   <th>Product</th>
 
                   <th>Unit</th>
+
+                  <th>wholesale</th>
 
                   <th>Price</th>
                 </tr>
@@ -39,7 +41,9 @@
                 <td>
                   {{$product->measurement}}
                 </td>
-
+                <td>
+                  {{$product->wholesale}}
+                </td>
                 <td>
                   {{$product->purchase_price}}
                 </td>
@@ -55,7 +59,7 @@
 </div>
 <section class="tasks">
         <div class="input-field">
-                            <label>Customer</label>
+                            <label style="margin-left: 5px; font-size:15px;">Customer</label>
                             <select  name = "supplierid" id="customer_id">
                                 <option disabled selected>Select Customer</option>
                                 
@@ -63,11 +67,17 @@
                                 
                                 <option value="{{$customer->id}}">{{$customer->company_name}}</option>
                                @endforeach
+                            
                             </select>
+                            <div style = "display:flex">
+                           
+                            <input type="checkbox" style="height:23px; margin:0; margin-left:5px;" class="select" name="task-1" id="wholesale" value="{{$product->product_name}}">
+                            <label style="margin-left: 5px; font-size:15px;">Wholesale</label>
+                            </div>
                            
                             
                         </div>
-        <table id="selected_product_list">
+        <table id="selected_product_list" class="content-table">
           <thead>
             {{csrf_field()}}
             <tr>  

@@ -10,6 +10,8 @@
     <link id="pagestyle" href="{{ URL::asset('css/sidebar.css') }}" rel="stylesheet" />
     <link id="pagestyle" href="{{ URL::asset('css/form.css') }}" rel="stylesheet" />
     <link id="pagestyle" href="{{ URL::asset('css/datatables.css') }}" rel="stylesheet" />
+    <link id="pagestyle" href="{{ URL::asset('css/table.css') }}" rel="stylesheet" />
+
   
     <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css"> -->
 
@@ -131,10 +133,10 @@
       <li>
         <a href="#">
           <i class='bx bx-pie-chart-alt-2' ></i>
-          <span class="link_name">Stock</span>
+          <span class="link_name">Summary</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Stock</a></li>
+          <li><a class="link_name" href="#">Summary</a></li>
         </ul>
       </li>
 
@@ -187,11 +189,16 @@
             {
                 target: 2,
                 visible: false,
+                searchable: false,
             },
-            
-        ]
+            {
+                target: 3,
+                visible: false,
+            },
+        ],
     });
 } );
+
   </script>
   
 </body>

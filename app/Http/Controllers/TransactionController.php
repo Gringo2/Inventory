@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Customer;
 use App\Models\Transaction;
-use APp\Models\TransactionLines;
+use App\Models\TransactionLine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -58,7 +58,7 @@ class TransactionController extends Controller
     public function show($id)
     {
         $transaction = Transaction::findorFail($id);
-        $transactionlines = DB::table('transaction_lines')->where('transaction_id',$id)->get();
+        $transactionlines = TransactionLine::where('transaction_id',$id)->get();
         $date = Carbon::parse($transaction->date);
         $transaction->date = $date->toDayDateTimeString();
         return view('Orders.show',['transaction'=>$transaction , 'transactionlines' => $transactionlines]);
