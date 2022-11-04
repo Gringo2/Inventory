@@ -1,0 +1,8 @@
+[03-Nov-2022 08:57:51 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/ahoondropcom/Fp.ahoondrop.com/Inventory/app/Http/Controllers/PurchaseAPI.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/ahoondropcom/Fp.ahoondrop.com/Inventory/app/Http/Controllers/PurchaseAPI.php on line 15
+[03-Nov-2022 08:57:53 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/ahoondropcom/Fp.ahoondrop.com/Inventory/app/Http/Controllers/PurchaseAPI.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/ahoondropcom/Fp.ahoondrop.com/Inventory/app/Http/Controllers/PurchaseAPI.php on line 15

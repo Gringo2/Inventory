@@ -56,12 +56,12 @@
                         </div>
                         <div class="input-field">
                             <label>Customer Type</label>
-                            <select  name = "measurment">
+                            <select  name = "type">
                                 <option disabled selected>Type</option>
                                 <option value="Wholesale">Wholesale</option>
                                 <option value="Retail">Retail</option>    
                             </select>
-                            @error('measurment')
+                            @error('type')
                             <div class="error">
                                 {{$message}}
                             </div>

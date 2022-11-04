@@ -28,6 +28,7 @@ class StoreCustomerRequest extends FormRequest
             "email" => "required",
             "phone_number" => "required",
             "address" => "required",
+            "type"  => "required"
         ];
     }
 }

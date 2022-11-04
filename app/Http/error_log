@@ -1,0 +1,4 @@
+[03-Nov-2022 08:58:07 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Http\Kernel' not found in /home/ahoondropcom/Fp.ahoondrop.com/Inventory/app/Http/Kernel.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/ahoondropcom/Fp.ahoondrop.com/Inventory/app/Http/Kernel.php on line 7
