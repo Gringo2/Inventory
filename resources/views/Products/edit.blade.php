@@ -13,9 +13,9 @@
                 <div class="details personal">
                     
 
-                    <div class="fields">
+                <div class="fields">
                         <div class="input-field">
-                            <label>Product Name</label>
+                            <label>Product Name *</label>
                             <input type="text" name="product_name" value="{{$product->product_name}}" required>
                             @error('product_name')
                             <div class="error">
@@ -35,52 +35,32 @@
                         </div>
 
                         <div class="input-field">
-                            <label>Brand</label>
-                            <input type="text" name="brand" value="{{$product->brand}}" required>
-                            @error('brand')
-                            <div class="error">
-                                {{$message}}
-                            </div>
-                            @enderror
-                            
-                        </div>
+                            <label>Measurment</label>
+                            <select  name = "measurment" style="max-height: 42px; width: 220px;" >
+                                <option disabled selected>{{$product->measurement}}</option>
 
-                        <div class="input-field">
-                            <label>Quantity</label>
-                            <input type="text" name="quantity" placeholder="quantity" required>
-                            @error('quantity')
-                            <div class="error">
-                                {{$message}}
-                            </div>
-                            @enderror
-                            <!-- <input type="number" placeholder="Enter mobil" required> -->
-                        </div>
-                        <!-- <div class="input-field">
-                            <label>Supplier</label>
-                            <input type="text" placeholder="supplier name" required>
-                            @error('supplier')
-                            <div class="error">
-                                {{$message}}
-                            </div>
-                            @enderror
-                        </div> -->
-
-                        <div class="input-field">
-                            <label>Category</label>
-                            <select >
-                                <option disabled selected>Select Category</option>
-                                <option></option>
-                                <option></option>
-                                <option></option>
+                                <option value="PK">PK</option>
+                                <option value="BOX">Box</option>
+                                <option value="Tin">Tin</option>
+                                <option value="Bottle">Bottle</option>
+                                 
                             </select>
-                            
+                            @error('measurment')
+                            <div class="error">
+                                {{$message}}
+                            </div>
+                            @enderror
                         </div>
-                        <button class="nextBtn">
-                        <span class="btnText">Submit</span>
-                        <i class="uil uil-navigator"></i>
-                    </button>
+                        
                     </div>
                 </div>
+                <div>
+                    <button class="btn btn-primary" style="margin:auto;" data-load-more>
+                        <span class="spiner"></span>
+
+                        <span>Update Product</span>
+                        </button>
+                        </div>
             </div>
         </form>
     </div>

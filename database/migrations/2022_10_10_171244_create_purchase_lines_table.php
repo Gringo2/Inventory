@@ -18,12 +18,10 @@ return new class extends Migration
             $table->foreignId('product_id')->nullable($value = true);
             $table->foreignId('purchase_id')->nullable($value = true);
             $table->string('product_name');
+            $table->string('sku');
             $table->float('unit_price')->nullable($value = true);
-            $table->string('unit');
-            $table->string('batch_no');
             $table->integer('amount')->nullable($value = true);
             $table->float('total')->nullable($value = true);
-            $table->date('expire_date');
             $table->timestamps();
         });
     }

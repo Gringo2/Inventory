@@ -21,8 +21,7 @@ return new class extends Migration
             $table->string('batch_no');
             $table->string('expire_date');
             $table->Integer('stock');
-            $table->string('status');
-            $table->Integer('flag');
+            $table->float('unit_price')->nullable($value = true);
             $table->Integer('month_to_expire');
             $table->timestamps();
         });

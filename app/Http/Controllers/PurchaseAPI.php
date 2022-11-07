@@ -49,43 +49,39 @@ class PurchaseAPI extends Controller
         $purchase->save();
 
         foreach($request['data'] as $newReq)
-        {
+        {   
+             //get the expire date difference from current date
+            
+             $now = Carbon::now();
+             $stock = 0;
+             $product_store = new ProductStore;
+             $product_store->product_id  = $newReq['product_id'];
+             $product_store->name        = $newReq['name'];
+             $product_store->batch_no    = $newReq['batch_no'];
+             $product_store->expire_date = $newReq['expire_date'];
+             $product_store->stock       = $newReq['amount'];
+             $product_store->unit_price  = $newReq['price'];
+             //set month to expire
+             $expire_date = Carbon::parse($product_store->expire_date);
+             $diff_in_months = $now->diffInMonths($expire_date);
+             $product_store->month_to_expire = $diff_in_months;
+ 
+             $product_store->save();
+
             //save current purchase invoice
             $purchaseline = PurchaseLine::create([
                 'product_id'    => $newReq['product_id'],
                 'purchase_id'   => $purchase->id,
                 'product_name'  => $newReq['name'],
+                'sku'           => $product_store->sku,
                 'unit_price'    => $newReq['price'],
-                'unit'          => $newReq['unit'],
-                'batch_no'      => $newReq['batch_no'],
                 'amount'        => $newReq['amount'],
                 'total'         => $newReq['total'],
-                'expire_date'   => $newReq['expire_date']
                 ]
             );
 
             //condition if current batch-no and expire date match exisiting record
-
-            
-
-            //get the expire date difference from current date
-            
-            $now = Carbon::now();
-            $stock = 0;
-            $product_store = new ProductStore;
-            $product_store->product_id  = $newReq['product_id'];
-            $product_store->name        = $newReq['name'];
-            $product_store->batch_no    = $newReq['batch_no'];
-            $product_store->expire_date = $newReq['expire_date'];
-            $product_store->stock       = $newReq['amount'];
-            $product_store->status      = "st";
-            $product_store->flag        = 1;
-            //set month to expire
-            $expire_date = Carbon::parse($product_store->expire_date);
-            $diff_in_months = $now->diffInMonths($expire_date);
-            $product_store->month_to_expire = $diff_in_months;
-
-            $product_store->save();
+           
             //get the current product
             $product = Product::findorfail($newReq['product_id']);
             //save variant stock count sum

@@ -36,7 +36,9 @@
                 <td>
                     <h3 >{{$product->name}}</h3>
                 </td>
-                <td></td>
+                <td>
+                  {{$product->unit_price}}
+                </td>
                 <td>
                     {{$product->batch_no}}
                 </td>

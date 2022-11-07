@@ -19,7 +19,7 @@ $('document').ready(function(){
                 {data: 'amount',
                 render: function (data, type, row, meta) {
                     return type === 'display'
-                        ? `<input type="number" class = "inp_chk" id=${"amount_" + row["product_id"]} style="width: 50px;" placeholder="1" step="1" min="1" max="1000" value="${data}"/>`
+                        ? `<input type="number" class = "inp_chk" id=${"amount_" + row["product_id"]} style="width: 50px;" placeholder="1" step="1" min="1" max="" value="${data}"/>`
                         : data;
                 },},
                 {data: 'total'}
@@ -34,7 +34,7 @@ $('document').ready(function(){
             var prodObj = {
                 'product_id':selected_data[1],
                 'name': selected_data[2], 
-                'price':selected_data[5] ,
+                'price':selected_data[4] ,
                 'wholesale' : selected_data[4],
                 'retail' : selected_data[5],
                 'amount': value , 
@@ -45,9 +45,17 @@ $('document').ready(function(){
             
             if($('#wholesale').is(':checked')){
                 for(let i = 0; i < selected_product.length; i++){
-                    selected_product[i].price = selected_product[i].wholesale;
+                    selected_product[i].price = selected_product[i].retail;
+                    selected_product[i].total = selected_product[i].price * selected_product[i].amount;
+                    
                     console.log('---');
                 }
+                total = 0;
+                for(let i = 0; i < selected_product.length; i++){
+                    total = total + selected_product[i].total;
+                }
+                $('#subtotal').empty();
+                $('#subtotal').append('Total : ' + total);
             }
             console.log(selected_product);
             productListTable.clear().rows.add(selected_product).draw();
@@ -68,6 +76,14 @@ $('document').ready(function(){
                  return data.product_id != selectedId;
             });
             console.log(selected_product);
+
+            total = 0;
+            for(let i = 0; i < selected_product.length; i++){
+                total = total + selected_product[i].total;
+            }
+            console.log('log' + total);
+            $('#subtotal').empty();
+            $('#subtotal').append('Total : ' + total);
             productListTable.clear().rows.add(selected_product).draw();
             
         }
@@ -76,16 +92,32 @@ $('document').ready(function(){
     $('#wholesale').on('change',function() { 
         if (!$(this).is(':checked')) { 
                 for(let i = 0; i < selected_product.length; i++){
-                    selected_product[i].price = selected_product[i].retail;
+                    selected_product[i].price = selected_product[i].wholesale;
+                    selected_product[i].total = selected_product[i].price * selected_product[i].amount;
+                    
                 }
+                total = 0;
+                for(let i = 0; i < selected_product.length; i++){
+                    total = total + selected_product[i].total;
+                }
+                $('#subtotal').empty();
+                $('#subtotal').append('Total : ' + total);
                 console.log("if");
+                
                 productListTable.clear().rows.add(selected_product).draw();
                 console.log($('#wholesale').is(':checked'));
             }else{
                 for(let i = 0; i < selected_product.length; i++){
-                    selected_product[i].price = selected_product[i].wholesale;
-                    
+                    selected_product[i].price = selected_product[i].retail;
+                    selected_product[i].total = selected_product[i].price * selected_product[i].amount;
+
                 }
+                total = 0;
+                for(let i = 0; i < selected_product.length; i++){
+                    total = total + selected_product[i].total;
+                }
+                $('#subtotal').empty();
+                $('#subtotal').append('Total : ' + total);
                 productListTable.clear().rows.add(selected_product).draw();
                 console.log("else");
                 console.log($('#wholesale').is(':checked'));
@@ -95,7 +127,8 @@ $('document').ready(function(){
       
     $('#selected_product_list tbody').on('change', '.inp_chk', function() {    
         var n_selected_data = productListTable.row($(this).parents('tr')).data();
-        var val = $('#amount_' + n_selected_data.product_id).val();  
+        var val = $('#amount_' + n_selected_data.product_id).val();
+
         for(let i = 0; i < selected_product.length; i++ ){
             if(selected_product[i].name == n_selected_data.name){
                 selected_product[i].amount = val;

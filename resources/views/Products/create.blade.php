@@ -43,6 +43,8 @@
                                 <option value="BOX">Box</option>
                                 <option value="Tin">Tin</option>
                                 <option value="Bottle">Bottle</option>
+                                <option value="Bottle">10x10</option>
+                                <option value="Bottle">2x10</option>
                                 
                             </select>
                             @error('measurment')

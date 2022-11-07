@@ -10,6 +10,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\PurchaseAPI;
 use App\Http\Controllers\TransactionAPI;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,13 +24,16 @@ use App\Http\Controllers\TransactionAPI;
 
 Route::get('/', function () { 
 
-    return view('Dashboard');})
-    ->middleware('auth');
+    $user = Auth::user();
+    Log::info($user);
+    return view('Dashboard',['user'=>$user]);
+})->middleware('auth');
 
 route::get('/dashboard',function(){ 
-    return view('Dashboard'); })
-    ->name('dashboard')
-    ->middleware('auth');
+    $user = Auth::user();
+    Log::info($user);
+    return view('Dashboard',['user'=>$user]); 
+})->name('dashboard')->middleware('auth');
 
 Route::match( ['get','post'], '/register', [AuthController::class,'register'])
 ->name('register')->middleware('guest');

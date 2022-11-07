@@ -43,7 +43,7 @@ class CustomerController extends Controller
         $customer->email = $request->input('email');
         $customer->phone_number = $request->input('phone_number');
         $customer->address  = $request->input('address');
-        $customer->type = $request->input('type');
+        
         $customer->save();
 
         return redirect()

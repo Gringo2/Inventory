@@ -54,22 +54,7 @@
                             @enderror
                             
                         </div>
-                        <div class="input-field">
-                            <label>Customer Type</label>
-                            <select  name = "type">
-                                <option disabled selected>Type</option>
-                                <option value="Wholesale">Wholesale</option>
-                                <option value="Retail">Retail</option>    
-                            </select>
-                            @error('type')
-                            <div class="error">
-                                {{$message}}
-                            </div>
-                            @enderror
-                        </div>
-
-                        
-                        
+                                    
                         <!-- <button class="nextBtn">
                         <span class="btnText">Submit</span>
                         <i class="uil uil-navigator"></i>

@@ -45,6 +45,7 @@ class TransactionAPI extends Controller
         $transaction->sub_total = $request['total'];
         $transaction->customer_id = $request['customer_id'];
         $transaction->date = now();
+        $transaction->invoice_no = 0;
         $transaction->save();
 
         $customer = Customer::findorfail($request['customer_id']);

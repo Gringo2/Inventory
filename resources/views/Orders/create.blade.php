@@ -45,9 +45,10 @@
                   {{$product->wholesale}}
                 </td>
                 <td>
-                  {{$product->purchase_price}}
+                  {{$product->retail_price}}
                 </td>
                 </tr>
+                <input type="hidden" id="stock_{{$product->id}}" name="custId" value="{{$product->stock}}">
 
       @empty
       <h2>There are no products yet.</h2>
@@ -72,7 +73,7 @@
                             <div style = "display:flex">
                            
                             <input type="checkbox" style="height:23px; margin:0; margin-left:5px;" class="select" name="task-1" id="wholesale" value="{{$product->product_name}}">
-                            <label style="margin-left: 5px; font-size:15px;">Wholesale</label>
+                            <label style="margin-left: 5px; font-size:15px;">Pharmacy</label>
                             </div>
                            
                             

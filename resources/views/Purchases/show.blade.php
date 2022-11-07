@@ -121,7 +121,7 @@
 
 				<tr class="heading">
 					<td>Item</td>
-          <td>batch_no</td>
+          <td>SN</td>
 					<td>Price</td>
           <td>Amount</td>
           <td>total</td>
@@ -129,7 +129,7 @@
           @foreach($purchaselines as $purchaseline)
 				<tr class="item">
 					<td>{{$purchaseline->product_name}}</td>
-          <td>{{$purchaseline->batch_no}}</td>
+          <td>{{$purchaseline->sku}}</td>
           <td>{{$purchaseline->unit_price}} Br.</td>
           <td>{{$purchaseline->amount}}</td>
           <td>{{$purchaseline->total}}</td>

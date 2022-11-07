@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('customer_id');
+            $table->string('invoice_no');
             $table->float('sub_total')->default($value);
             $table->dateTime('date', $precision = 0);
             $table->timestamps();

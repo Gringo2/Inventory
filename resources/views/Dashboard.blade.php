@@ -9,7 +9,7 @@
 
       <h2 class="h2 article-title">Dashboard</h2>
 
-      <p class="article-subtitle">Welcome to Dashboard!</p>
+      <!-- <p class="article-subtitle">Welcome to Dashboard!</p> -->
 
       <!-- 
         - #HOME
@@ -61,9 +61,9 @@
             </figure>
 
             <div>
-              <p class="card-title">Elizabeth Foster</p>
+              <p class="card-title">{{$user->name}}</p>
 
-              <p class="card-subtitle">Web & Graphic Designer</p>
+              <p class="card-subtitle">Administrator</p>
             </div>
 
           </div>
@@ -74,7 +74,7 @@
               <a href="mailto:xyz@mail.com" class="contact-link icon-box">
                 <span class="material-symbols-rounded  icon">mail</span>
 
-                <p class="text">xyz@mail.com</p>
+                <p class="text">{{$user->email}}</p>
               </a>
             </li>
 
@@ -90,7 +90,7 @@
 
           <div class="divider card-divider"></div>
 
-          <ul class="progress-list">
+          <!-- <ul class="progress-list">
 
             <li class="progress-item">
 
@@ -120,7 +120,7 @@
 
             </li>
 
-          </ul>
+          </ul> -->
 
         </div>
 
@@ -184,7 +184,7 @@
 
           <p class="card-title">Revenue</p>
 
-          <data class="card-price" value="2100">$2,100</data>
+          <data class="card-price" value="2100">0.0 Br.</data>
 
           <p class="card-text">Last Week</p>
 
