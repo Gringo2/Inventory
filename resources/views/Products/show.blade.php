@@ -14,13 +14,15 @@
 
                   <th>Name</th>
 
+                  <th>purchase price</th>
+                  
                   <th>batch_no</th>
 
                   <th>expiry_date</th>
 
                   <th>stock</th>
 
-                  <th>status</th>
+                  <th>Expiry status</th>
 
                 </tr>
               </thead>
@@ -34,6 +36,7 @@
                 <td>
                     <h3 >{{$product->name}}</h3>
                 </td>
+                <td></td>
                 <td>
                     {{$product->batch_no}}
                 </td>

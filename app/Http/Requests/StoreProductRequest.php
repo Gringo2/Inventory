@@ -25,7 +25,6 @@ class StoreProductRequest extends FormRequest
     {
         return [
             "product_name" => 'required',
-            "description" => 'required',
             "measurment" => "required",
         ];
     }

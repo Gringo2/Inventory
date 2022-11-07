@@ -25,10 +25,6 @@ class StoreCustomerRequest extends FormRequest
     {
         return [
             "company_name" => "required",
-            "email" => "required",
-            "phone_number" => "required",
-            "address" => "required",
-            "type"  => "required"
         ];
     }
 }

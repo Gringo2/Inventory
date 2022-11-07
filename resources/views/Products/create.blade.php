@@ -35,7 +35,7 @@
 
                         <div class="input-field">
                             <label>Measurment</label>
-                            <select  name = "measurment">
+                            <select  name = "measurment" style="max-height: 42px; width: 220px;" >
                                 <option disabled selected>Select Measurement</option>
                                
                                 
