@@ -48,9 +48,8 @@ class SupplierController extends Controller
 
         return redirect()
             ->route('suppliers.create')
-            ->with('success','registered customer. Company Name:' .
-            $request->input('company_name').'email:'.
-            $request->input('email'));
+            ->with('success','Registered Supplier. Company Name:' .
+            $request->input('company_name'));
     }
 
     /**

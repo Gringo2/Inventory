@@ -15,7 +15,7 @@
                     <div class="fields">
                         <div class="input-field">
                             <label>Company Name</label>
-                            <input type="text" name="company_name" placeholder="{{$supplier->company_name}}" required>
+                            <input type="text" name="company_name" value="{{$supplier->company_name}}" required>
                             @error('company_name')
                             <div class="error">
                                 {{$message}}
@@ -25,7 +25,7 @@
 
                         <div class="input-field">
                             <label>Email</label>
-                            <input type="text" name="email" placeholder="{{$supplier->email}}" required>
+                            <input type="text" name="email" value="{{$supplier->email}}">
                             @error('email')
                             <div class="error">
                                 {{$message}}
@@ -35,7 +35,7 @@
 
                         <div class="input-field">
                             <label>Phone Number</label>
-                            <input type="text" name="phone_number" placeholder="{{$supplier->phone_number}}" required>
+                            <input type="text" name="phone_number" value="{{$supplier->phone_number}}" >
                             @error('phone_number')
                             <div class="error">
                                 {{$message}}
@@ -46,7 +46,7 @@
 
                         <div class="input-field">
                             <label>Address</label>
-                            <input type="text" name="address"placeholder="{{$supplier->address}}" required>
+                            <input type="text" name="address" value="{{$supplier->address}}" >
                             @error('address')
                             <div class="error">
                                 {{$message}}

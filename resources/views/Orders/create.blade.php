@@ -5,7 +5,7 @@
 @section('content')
 <div style="display:flex;">
 <div class="table-container">
-            <table id="mytable" class="content-table">
+            <table id="mytableorder" class="content-table">
 
               <thead>
                 <tr>
@@ -21,6 +21,8 @@
                   <th>wholesale</th>
 
                   <th>Price</th>
+
+                  <th>stock</th>
                 </tr>
               </thead>
 
@@ -47,9 +49,11 @@
                 <td>
                   {{$product->retail_price}}
                 </td>
+                <td>
+                  {{$product->stock}}
+                </td>
                 </tr>
-                <input type="hidden" id="stock_{{$product->id}}" name="custId" value="{{$product->stock}}">
-
+                
       @empty
       <h2>There are no products yet.</h2>
       @endforelse
@@ -86,7 +90,8 @@
                   <th>ProductName</th>                  
                   <th>UnitPrice</th>
                   <th>Amount</th>
-                  <th>Total</th>                 
+                  <th>Total</th>
+                  <th>max</th>              
             </tr>
           </thead>
           <tbody id="purchase_body">

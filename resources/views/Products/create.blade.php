@@ -25,7 +25,7 @@
 
                         <div class="input-field">
                             <label>Description</label>
-                            <input type="text" name="description" placeholder="Description" required>
+                            <input type="text" name="description" placeholder="Description">
                             @error('description')
                             <div class="error">
                                 {{$message}}

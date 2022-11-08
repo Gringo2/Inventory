@@ -2,7 +2,20 @@ $('document').ready(function(){
     var total = 0;
     var selected_product = [];
     var valuator = 0;
-    var product_list = $('#mytable').DataTable();
+    var product_list = $('#mytableorder').DataTable({
+        retrieve:true,
+        columnDefs: [
+            {
+                target: 1,
+                visible: false,
+            },
+            {
+                target: 6,
+                visible: false,
+            }
+        ],
+
+    });
     var productListTable = $('#selected_product_list').DataTable({
         retrieve:true,
         columnDefs: [
@@ -10,6 +23,10 @@ $('document').ready(function(){
                 target: 0,
                 visible: false,
             },
+            {
+                target: 5,
+                visible: false,
+            }
             
         ],
         columns: [
@@ -19,14 +36,15 @@ $('document').ready(function(){
                 {data: 'amount',
                 render: function (data, type, row, meta) {
                     return type === 'display'
-                        ? `<input type="number" class = "inp_chk" id=${"amount_" + row["product_id"]} style="width: 50px;" placeholder="1" step="1" min="1" max="" value="${data}"/>`
+                        ? `<input type="number" class = "inp_chk" id=${"amount_" + row["product_id"]} style="width: 50px;" placeholder="1" step="1" min="1" max=${row["max"]} value="${data}"/>`
                         : data;
                 },},
-                {data: 'total'}
+                {data: 'total'},
+                {data: 'max'}
            ]});
 
            
-    $('#mytable tbody').on('change', '.selectProduct', function(){
+    $('#mytableorder tbody').on('change', '.selectProduct', function(){
         var selected_data = product_list.row($(this).parents('tr')).data();
         if($(this).is(':checked')){
             
@@ -39,6 +57,7 @@ $('document').ready(function(){
                 'retail' : selected_data[5],
                 'amount': value , 
                 'total': selected_data[4]*value,
+                'max': selected_data[6]
             }
             selected_product.push(prodObj);
             //detect increase in amount

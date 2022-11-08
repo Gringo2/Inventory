@@ -154,9 +154,12 @@
   <section class="home-section">
     @includeWhen($errors->any(),'_errors')
     @if(session('success'))
-            <div class="flash-success">
+    <div style= "display: flex; flex-direction:column;">
+            <div class="flash-success" style="margin:auto; background: #3fa43c;
+            padding: 10px 10px;width:72%; margin-bottom: 20px;border-radius:7px;color:white;" >
                 {{session('success')}}
             </div>
+    <div>
             @endif
     @yield('content')
   </section>
@@ -184,18 +187,18 @@
 
   $(document).ready( function () {
     $('#mytable').DataTable({
-      retrieve:true,
-      columnDefs: [
-            {
-                target: 2,
-                visible: false,
-                searchable: false,
-            },
-            {
-                target: 3,
-                visible: false,
-            },
-        ],
+      // retrieve:true,
+      // columnDefs: [
+      //       {
+      //           target: 2,
+      //           visible: false,
+      //           searchable: false,
+      //       },
+      //       {
+      //           target: 3,
+      //           visible: false,
+      //       },
+      //   ],
     });
 } );
 

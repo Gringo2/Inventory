@@ -48,9 +48,8 @@ class CustomerController extends Controller
 
         return redirect()
             ->route('customers.create')
-            ->with('success','registered customer. Company Name:' .
-            $request->input('company_name').'email:'.
-            $request->input('email'));
+            ->with('success','Registered Customer. Company Name:' .
+            $request->input('company_name'));
 
 
     }
