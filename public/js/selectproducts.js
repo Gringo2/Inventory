@@ -25,7 +25,7 @@ $('document').ready(function(){
             },
             {
                 target: 5,
-                visible: false,
+                visible: true,
             }
             
         ],
@@ -184,7 +184,7 @@ $('document').ready(function(){
                    }
                }
             ).done(function() {
-                window.location.replace("http://localhost/transactions");
+                window.location.replace("http://fp.ahoondrop.com/transactions");
               })
               .fail(function() {
                 alert( "Request failed. Contact system admin if error persists. ");

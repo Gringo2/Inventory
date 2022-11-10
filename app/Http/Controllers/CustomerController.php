@@ -93,8 +93,8 @@ class CustomerController extends Controller
 
         $customer->company_name = $request->input('company_name');
         $customer->email = $request->input('email');
-        $customer->phone_number = $request('phone_number');
-        $customer->address  = $request('adrress');
+        $customer->phone_number = $request->input('phone_number');
+        $customer->address  = $request->input('address');
 
         $customer->save();
     }

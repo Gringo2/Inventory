@@ -8,6 +8,7 @@
 
         <form method="POST"action="{{route('customers.update',['customer' => $customer->id])}}">
             @csrf
+             @method('PUT')
             <div class="form first">
                 <div class="details personal">
                     

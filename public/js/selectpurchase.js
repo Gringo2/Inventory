@@ -152,7 +152,7 @@ $('document').ready(function(){
                    }
                }
             ).done(function() {
-                window.location.replace("http://localhost/purchase");
+                window.location.replace("http://fp.ahoondrop.com/purchase");
               })
               .fail(function() {
                 alert( "Request failed. Contact system admin if error persists. ");

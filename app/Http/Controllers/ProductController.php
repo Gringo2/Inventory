@@ -117,9 +117,14 @@ class ProductController extends Controller
 
         $product->product_name = $request->input('product_name');
         $product->description = $request->input('description');
-        $product->brand = $request->input('brand');
-        $product->quantity = $request->input('quantity');
+        $product->measurement = $request->input('measurment');
         $product->save();
+        
+         return view('Products.edit',[
+            'product' => Product::findorfail($id),
+        ])
+            ->with('success','Product updated Successfully! Name:'.
+            $request->input('product_name'));
 
         
 

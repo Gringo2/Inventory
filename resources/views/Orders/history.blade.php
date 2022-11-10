@@ -45,7 +45,7 @@
                 </td>
               </tr>
       @empty
-      <h2>There are no purchases yet.</h2>
+      <h2>There are no sale orders yet.</h2>
       @endforelse
               </tbody>
             </table>
