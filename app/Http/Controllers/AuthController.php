@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -36,6 +37,14 @@ class AuthController extends Controller
         if($request->isMethod('get')){
             return view('Auth.login');
         }
+        $user = User::where('email', $request['email'])->first();
+
+        if(!$user){
+            Log::info("wrong email");
+            return redirect()
+                ->route('login')->withErrors("user name doesn't exist!");
+        } 
+        
         $credentials = $request->validate([
             'email' => 'required',
             'password' => 'required',
@@ -43,14 +52,15 @@ class AuthController extends Controller
 
         if(Auth::attempt($credentials)){
             return redirect()
-                    ->route('dashboard');
-                    // ->with('success', 'you are logged in!');
+                    ->route('dashboard')
+                    ->with('success', 'you are logged in!');
 
         }
         
+        Log::info("wrong password");
         return redirect()
                 ->route('login')
-                ->withErrors('Provided login information is not valid.');
+                ->withErrors('Password mismatch. please enter correct password!');
 
     }
     public function logout(Request $request){
@@ -60,7 +70,7 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()
-            ->route('dashboard');
-            // ->with('success','you are now logged out.');
+            ->route('dashboard')
+            ->with('success','you are now logged out.');
     }
 }

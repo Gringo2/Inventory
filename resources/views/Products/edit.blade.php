@@ -37,7 +37,7 @@
                         <div class="input-field">
                             <label>Measurment</label>
                             <select  name = "measurment" style="max-height: 42px; width: 220px;" >
-                                <option disabled selected>{{$product->measurement}}</option>
+                                <option selected value="{{$product->measurement}}">{{$product->measurement}}</option>
 
                                 <option value="PK">PK</option>
                                 <option value="BOX">Box</option>

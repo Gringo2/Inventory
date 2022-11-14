@@ -11,7 +11,7 @@ $('document').ready(function(){
             },
             {
                 target: 6,
-                visible: false,
+                visible: true,
             }
         ],
 
@@ -25,7 +25,7 @@ $('document').ready(function(){
             },
             {
                 target: 5,
-                visible: true,
+                visible: false,
             }
             
         ],
