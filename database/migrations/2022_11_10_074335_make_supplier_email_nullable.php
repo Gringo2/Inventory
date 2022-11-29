@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('suppliers', function (Blueprint $table) {
             //
-            $table->string('email')->nullable();
+            $table->string('email')->nullable()->change();
         });
     }
 

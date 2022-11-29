@@ -67,7 +67,7 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Products</a></li>
-          <li><a href="{{route('products.create')}}">Add Product</a></li>
+          <!-- <li><a href="{{route('products.create')}}">Add Product</a></li> -->
           <li><a href="{{route('products.list')}}">List Product</a></li>
         </ul>
       </li>

@@ -5,7 +5,10 @@
 @section('content')
 
 <div style="max-width: 80vw; margin: auto;"  >
+
             <h2 class="h2 article-title">Products List</h2>
+            <div><a href="{{route('products.create')}}" class="btn btn-primary" style="justify-content: center; margin-right:10px; max-width:130px;">New Product</a>
+            </div>
             <table id="mytable" class="content-table" >
 
               <thead>

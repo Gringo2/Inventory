@@ -6,7 +6,7 @@ use App\Models\Purchase;
 use App\Models\Supplier;
 use App\Models\PurchaseLine;
 use App\Http\Requests\PurchaseRequest;
-use Support\Facades\Log;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -84,7 +84,10 @@ class PurchaseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $purchase = Purchase::findorFail($id);
+        $purchaselines = $purchase->purchase_line;
+
+        Log::info($purchaselines);
     }
 
     /**

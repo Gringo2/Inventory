@@ -35,7 +35,7 @@ class check_expiration implements ShouldQueue
     public function handle()
     {
         $product_stores = ProductStore::all();
-        Log::info($product_stores); 
+        Log::info("working"); 
         foreach($product_stores as $product_store){
             // Log::info($product_store); 
             $product_store->flag +=1;
